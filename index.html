@@ -2,713 +2,652 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viralize em 30 Dias — João Teixeira</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Viralize 30 Dias — João Teixeira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap');
-
 :root {
   --bg: #F4F3EF;
-  --bg2: #ECEAE5;
+  --bg2: #ECEAE4;
+  --bg3: #E4E2DB;
   --blue: #2A5FA8;
+  --blue2: #1a4a8a;
   --blue-light: #EAF1FB;
   --blue-mid: #B5D4F4;
-  --text: #1a1a18;
-  --text2: #5a5a55;
-  --text3: #9a9990;
-  --border: rgba(42,95,168,0.15);
-  --green: #1D9E75;
-  --green-light: #E1F5EE;
-  --amber: #BA7517;
-  --amber-light: #FAEEDA;
-  --red: #A32D2D;
-  --red-light: #FCEBEB;
-  --radius: 12px;
-  --radius-sm: 8px;
+  --text: #18180f;
+  --text2: #52524a;
+  --text3: #999890;
+  --border: rgba(26,26,15,0.1);
+  --border2: rgba(26,26,15,0.18);
+  --green: #1A8F68;
+  --green-light: #E0F4EE;
+  --amber: #A86020;
+  --amber-light: #FBF0E0;
+  --red: #962020;
+  --red-light: #FCEAEA;
+  --r: 14px;
+  --r-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 15px;
-  line-height: 1.6;
+/* ─── HEADER ─── */
+.site-header{
+  background:var(--text);
+  padding:16px 20px 14px;
+  position:sticky;top:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-
-/* HEADER */
-.header {
-  background: var(--text);
-  color: var(--bg);
-  padding: 20px 24px 18px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.header-title {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.3px;
-}
-.header-sub {
-  font-size: 11px;
-  color: rgba(244,243,239,0.5);
-  margin-top: 1px;
-}
-.header-score {
-  background: var(--blue);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
+.header-left{}
+.header-brand{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:var(--bg);letter-spacing:-.3px;}
+.header-handle{font-size:11px;color:rgba(244,243,239,.45);margin-top:1px;}
+.header-badge{
+  background:var(--blue);color:white;
+  padding:5px 14px;border-radius:20px;
+  font-size:12px;font-weight:600;white-space:nowrap;
+  letter-spacing:.3px;
 }
 
-/* NAV */
-.nav {
-  display: flex;
-  gap: 4px;
-  padding: 12px 16px;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+/* ─── NAV ─── */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:white;
+  border-top:1px solid var(--border);
+  display:flex;
+  padding-bottom:env(safe-area-inset-bottom,0);
 }
-.nav::-webkit-scrollbar { display: none; }
-.nav-btn {
-  padding: 7px 16px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  background: var(--bg);
-  color: var(--text2);
-  white-space: nowrap;
-  transition: all .15s;
+.nav-item{
+  flex:1;padding:10px 4px 8px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  cursor:pointer;border:none;background:none;
+  font-family:'DM Sans',sans-serif;
+  transition:all .15s;
 }
-.nav-btn.active {
-  background: var(--blue);
-  color: white;
-  border-color: var(--blue);
-  font-weight: 500;
+.nav-item .nav-icon{font-size:20px;line-height:1;}
+.nav-item .nav-label{font-size:10px;color:var(--text3);font-weight:500;letter-spacing:.3px;}
+.nav-item.active .nav-label{color:var(--blue);}
+.nav-item.active .nav-icon{transform:scale(1.1);}
+
+/* ─── SECTIONS ─── */
+.section{display:none;padding:16px 16px 100px;}
+.section.active{display:block;}
+.max-w{max-width:680px;margin:0 auto;}
+
+/* ─── TODAY HERO ─── */
+.today-hero{
+  background:var(--text);
+  border-radius:var(--r);
+  padding:20px;
+  margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.today-hero::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:160px;height:160px;
+  border-radius:50%;
+  background:rgba(42,95,168,.15);
+}
+.today-phase{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(244,243,239,.4);margin-bottom:6px;}
+.today-day{font-family:'Fraunces',serif;font-size:32px;font-weight:500;color:white;line-height:1;margin-bottom:4px;}
+.today-title{font-size:16px;color:rgba(244,243,239,.75);margin-bottom:14px;font-weight:300;}
+.today-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.today-tag{
+  padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500;
+}
+.tag-blue{background:rgba(42,95,168,.3);color:var(--blue-mid);}
+.tag-green{background:rgba(26,143,104,.25);color:#7de3c0;}
+.tag-amber{background:rgba(168,96,32,.25);color:#f5b97a;}
+
+/* ─── SCORE RING ─── */
+.score-section{
+  display:flex;align-items:center;gap:16px;
+  background:white;border:1px solid var(--border);
+  border-radius:var(--r);padding:16px 18px;
+  margin-bottom:14px;
+}
+.score-ring-wrap{position:relative;width:72px;height:72px;flex-shrink:0;}
+.score-ring-wrap svg{transform:rotate(-90deg);}
+.score-ring-bg{fill:none;stroke:var(--bg2);stroke-width:7;}
+.score-ring-fill{fill:none;stroke:var(--blue);stroke-width:7;stroke-linecap:round;transition:stroke-dashoffset .5s ease;}
+.score-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  text-align:center;
+}
+.score-big{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--text);line-height:1;}
+.score-sub{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;}
+.score-info{}
+.score-msg{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.score-detail{font-size:12px;color:var(--text3);}
+
+/* ─── CARDS ─── */
+.card{
+  background:white;border:1px solid var(--border);
+  border-radius:var(--r);padding:16px 18px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
+}
+.card-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+.card-title{font-family:'Fraunces',serif;font-size:16px;font-weight:500;color:var(--text);}
+.card-toggle{font-size:18px;color:var(--text3);transition:transform .2s;user-select:none;}
+.card-toggle.open{transform:rotate(180deg);}
+.card-body{}
+.card-body.collapsed{display:none;}
+
+/* ─── TASKS ─── */
+.task-list{}
+.task-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;border-bottom:1px solid var(--bg2);
+  cursor:pointer;transition:opacity .15s;
+}
+.task-item:last-child{border-bottom:none;}
+.task-check{
+  width:20px;height:20px;flex-shrink:0;margin-top:1px;
+  border:1.5px solid var(--border2);border-radius:6px;
+  background:white;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;font-size:11px;color:white;
+}
+.task-item.done .task-check{background:var(--green);border-color:var(--green);}
+.task-item.done .task-check::after{content:'✓';}
+.task-text{font-size:14px;line-height:1.5;flex:1;}
+.task-item.done .task-text{color:var(--text3);text-decoration:line-through;}
+.task-time{font-size:11px;color:var(--text3);white-space:nowrap;margin-top:2px;}
+
+/* ─── COACH NOTE ─── */
+.coach-box{
+  background:var(--blue-light);
+  border:1px solid var(--blue-mid);
+  border-left:3px solid var(--blue);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:12px 14px;
+  margin-bottom:12px;
+}
+.coach-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--blue);font-weight:600;margin-bottom:4px;}
+.coach-text{font-size:13px;color:var(--text2);line-height:1.6;}
+
+/* ─── GRP ─── */
+.grp-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.grp-btn{
+  padding:8px 16px;border-radius:20px;
+  border:1.5px solid var(--border2);background:white;
+  font-size:13px;font-family:'DM Sans',sans-serif;
+  cursor:pointer;color:var(--text2);transition:all .15s;
+  display:flex;align-items:center;gap:6px;
+}
+.grp-btn.done{background:var(--green-light);border-color:var(--green);color:var(--green);font-weight:500;}
+
+/* ─── COLLAPSIBLE CONTENT ─── */
+.content-section{margin-bottom:8px;}
+.content-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  background:var(--bg2);border-radius:var(--r-sm);
+  cursor:pointer;transition:background .15s;
+  user-select:none;
+}
+.content-header:hover{background:var(--bg3);}
+.content-header-left{display:flex;align-items:center;gap:10px;}
+.content-icon{font-size:16px;}
+.content-name{font-size:14px;font-weight:500;color:var(--text);}
+.content-arrow{font-size:14px;color:var(--text3);transition:transform .2s;}
+.content-arrow.open{transform:rotate(180deg);}
+.content-body{
+  display:none;
+  background:white;
+  border:1px solid var(--border);
+  border-top:none;
+  border-radius:0 0 var(--r-sm) var(--r-sm);
+  padding:14px 16px;
+}
+.content-body.open{display:block;}
+.content-body p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+.content-body p:last-child{margin-bottom:0;}
+.content-body h4{font-size:13px;font-weight:600;color:var(--text);margin:12px 0 6px;}
+.content-body ul{padding-left:16px;margin-bottom:10px;}
+.content-body ul li{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:4px;}
+.content-body .highlight{
+  background:var(--amber-light);border-left:3px solid var(--amber);
+  padding:10px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  font-size:13px;color:var(--text2);margin:10px 0;line-height:1.6;
+}
+.content-body .tip{
+  background:var(--green-light);border-left:3px solid var(--green);
+  padding:10px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  font-size:13px;color:var(--text2);margin:10px 0;line-height:1.6;
+}
+.content-body .example{
+  background:var(--blue-light);border-radius:var(--r-sm);
+  padding:10px 12px;font-size:13px;color:var(--text2);
+  margin:10px 0;line-height:1.6;font-style:italic;
 }
 
-/* SECTIONS */
-.section { display: none; padding: 16px; max-width: 680px; margin: 0 auto; }
-.section.active { display: block; }
+/* ─── NOTES ─── */
+.note-area{
+  width:100%;border:1px solid var(--border2);border-radius:var(--r-sm);
+  padding:10px 12px;font-size:14px;font-family:'DM Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  resize:vertical;min-height:80px;outline:none;line-height:1.6;
+}
+.note-area:focus{border-color:var(--blue);}
 
-/* CARDS */
-.card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  margin-bottom: 12px;
+/* ─── BUTTONS ─── */
+.btn{
+  padding:10px 20px;border-radius:var(--r-sm);font-size:13px;
+  font-family:'DM Sans',sans-serif;cursor:pointer;font-weight:500;
+  transition:all .15s;border:none;
 }
-.card-title {
-  font-family: 'Fraunces', serif;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-.card-sub {
-  font-size: 12px;
-  color: var(--text3);
-  margin-bottom: 12px;
-}
+.btn-primary{background:var(--blue);color:white;}
+.btn-primary:hover{background:var(--blue2);}
+.btn-sm{padding:7px 16px;font-size:12px;}
+.btn-outline{background:white;color:var(--text);border:1px solid var(--border2);}
+.btn-outline:hover{background:var(--bg2);}
 
-/* DAY NAVIGATION */
-.day-nav-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+/* ─── METRICS ─── */
+.metrics-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.metric-field{}
+.metric-label{font-size:11px;color:var(--text3);margin-bottom:4px;font-weight:500;}
+.metric-input{
+  width:100%;border:1px solid var(--border2);border-radius:var(--r-sm);
+  padding:9px 11px;font-size:14px;font-family:'DM Sans',sans-serif;
+  background:var(--bg);color:var(--text);outline:none;
 }
-.day-arrow {
-  width: 36px; height: 36px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: white;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text2);
-  flex-shrink: 0;
-}
-.day-arrow:hover { background: var(--bg2); }
-.day-info { flex: 1; }
-.day-number {
-  font-size: 12px;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.day-name {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.2;
-  margin: 2px 0;
-}
-.day-phase {
-  display: inline-block;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: var(--blue-light);
-  color: var(--blue);
-  font-weight: 500;
-}
+.metric-input:focus{border-color:var(--blue);}
 
-/* TASKS */
-.task-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--bg2);
-  cursor: pointer;
-}
-.task-item:last-child { border-bottom: none; }
-.task-cb {
-  width: 18px; height: 18px;
-  border: 1.5px solid var(--border);
-  border-radius: 4px;
-  background: white;
-  flex-shrink: 0;
-  margin-top: 2px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .15s;
-}
-.task-item.done .task-cb {
-  background: var(--green);
-  border-color: var(--green);
-  color: white;
-  font-size: 11px;
-}
-.task-text {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.5;
-  flex: 1;
-}
-.task-item.done .task-text {
-  color: var(--text3);
-  text-decoration: line-through;
-}
+/* ─── SUMMARY CARDS ─── */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.sum-card{background:var(--bg2);border-radius:var(--r-sm);padding:14px;text-align:center;}
+.sum-val{font-family:'Fraunces',serif;font-size:26px;font-weight:500;color:var(--text);line-height:1;}
+.sum-lbl{font-size:11px;color:var(--text3);margin-top:3px;}
 
-/* GRP */
-.grp-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-.grp-btn {
-  padding: 8px 16px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: white;
-  font-size: 13px;
-  cursor: pointer;
-  color: var(--text2);
-  font-family: 'DM Sans', sans-serif;
-  transition: all .15s;
+/* ─── CALENDAR ─── */
+.cal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px;}
+.cal-day{
+  aspect-ratio:1;border-radius:var(--r-sm);border:1px solid var(--border);
+  background:white;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;cursor:pointer;font-size:13px;font-weight:500;
+  transition:all .15s;
 }
-.grp-btn.done {
-  background: var(--green-light);
-  border-color: var(--green);
-  color: var(--green);
-  font-weight: 500;
+.cal-day:hover{border-color:var(--blue);}
+.cal-day.today{border:2px solid var(--blue);color:var(--blue);}
+.cal-day.complete{background:var(--green-light);border-color:var(--green);color:var(--green);}
+.cal-day.partial{background:var(--amber-light);border-color:var(--amber);color:var(--amber);}
+.cal-day-score{font-size:9px;opacity:.7;margin-top:1px;}
+
+/* ─── PROGRESS ─── */
+.prog-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.prog-lbl{font-size:12px;color:var(--text2);width:130px;flex-shrink:0;line-height:1.3;}
+.prog-bg{flex:1;background:var(--bg2);border-radius:4px;height:8px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:4px;transition:width .4s;}
+.prog-pct{font-size:11px;color:var(--text3);width:30px;text-align:right;}
+
+/* ─── CHART ─── */
+.chart-wrap{position:relative;width:100%;height:160px;margin-top:8px;}
+
+/* ─── RESOURCES ─── */
+.res-hook{
+  background:var(--bg2);border-radius:var(--r-sm);
+  padding:12px 14px;margin-bottom:6px;cursor:pointer;
+  transition:background .15s;border:1px solid transparent;
+}
+.res-hook:hover{background:var(--blue-light);border-color:var(--blue-mid);}
+.res-hook-text{font-size:13px;color:var(--text2);line-height:1.5;font-style:italic;}
+.res-hook-copy{font-size:10px;color:var(--text3);margin-top:4px;}
+
+.format-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;margin:3px;
+  background:var(--bg2);font-size:12px;color:var(--text2);
+  border:1px solid var(--border);cursor:default;
+}
+.emotion-card{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 14px;background:var(--bg2);border-radius:var(--r-sm);
+  margin-bottom:8px;
+}
+.emotion-emoji{font-size:24px;flex-shrink:0;margin-top:2px;}
+.emotion-name{font-size:14px;font-weight:500;margin-bottom:2px;}
+.emotion-desc{font-size:12px;color:var(--text3);line-height:1.5;}
+.emotion-sell{font-size:12px;color:var(--green);font-weight:500;margin-top:3px;}
+
+.grp-step{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 14px;background:var(--bg2);border-radius:var(--r-sm);
+  margin-bottom:6px;
+}
+.grp-num{
+  width:28px;height:28px;border-radius:50%;background:var(--blue);
+  color:white;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px;
+}
+.grp-step-name{font-size:13px;font-weight:500;margin-bottom:2px;}
+.grp-step-desc{font-size:12px;color:var(--text3);line-height:1.4;}
+
+.structure-row{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;
+}
+.structure-box{border-radius:var(--r-sm);padding:14px 10px;text-align:center;}
+.structure-box-title{font-family:'Fraunces',serif;font-size:16px;font-weight:500;margin-bottom:4px;}
+.structure-box-sub{font-size:11px;color:var(--text3);line-height:1.4;}
+
+/* ─── CHECKLIST POST ─── */
+.post-check{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;border-bottom:1px solid var(--bg2);
+  font-size:13px;color:var(--text2);
+}
+.post-check:last-child{border-bottom:none;}
+.post-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+
+/* ─── SECTION DIVIDER ─── */
+.section-label{
+  font-size:10px;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--text3);font-weight:600;margin:20px 0 10px;
 }
 
-/* SCORE */
-.score-display {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 8px;
+/* ─── INLINE ALERT ─── */
+.alert{border-radius:var(--r-sm);padding:12px 14px;margin-bottom:12px;font-size:13px;line-height:1.6;}
+.alert-blue{background:var(--blue-light);border:1px solid var(--blue-mid);color:var(--text2);}
+.alert-amber{background:var(--amber-light);border:1px solid rgba(168,96,32,.2);color:var(--text2);}
+.alert-green{background:var(--green-light);border:1px solid rgba(26,143,104,.2);color:var(--text2);}
+.alert-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+
+/* ─── DAY NAV ─── */
+.day-nav-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.day-arrow{
+  width:38px;height:38px;border:1px solid var(--border2);border-radius:var(--r-sm);
+  background:white;cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text2);flex-shrink:0;transition:all .15s;
 }
-.score-num {
-  font-family: 'Fraunces', serif;
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--blue);
-  line-height: 1;
-}
-.score-total { font-size: 16px; color: var(--text3); }
-.score-label { font-size: 13px; color: var(--text2); margin-bottom: 8px; }
-.score-bar-bg {
-  background: var(--bg2);
-  border-radius: 4px;
-  height: 8px;
-  overflow: hidden;
-}
-.score-bar-fill {
-  height: 100%;
-  border-radius: 4px;
-  background: var(--blue);
-  transition: width .4s ease;
+.day-arrow:hover{background:var(--bg2);}
+.day-arrow:disabled{opacity:.3;cursor:default;}
+.day-counter{
+  flex:1;text-align:center;
+  font-size:12px;color:var(--text3);font-weight:500;letter-spacing:.5px;
 }
 
-/* NOTES */
-.note-area {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: 14px;
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  resize: vertical;
-  min-height: 80px;
-  outline: none;
-}
-.note-area:focus { border-color: var(--blue); }
-
-/* CONTEXT BOX */
-.context-box {
-  background: var(--bg2);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  margin-bottom: 10px;
-}
-.context-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text3);
-  margin-bottom: 4px;
-}
-.context-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
-
-/* CALENDAR */
-.cal-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 6px;
-  margin-bottom: 16px;
-}
-.cal-day {
-  aspect-ratio: 1;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all .15s;
-  position: relative;
-}
-.cal-day:hover { border-color: var(--blue); }
-.cal-day.today { border: 2px solid var(--blue); color: var(--blue); }
-.cal-day.complete { background: var(--green-light); border-color: var(--green); color: var(--green); }
-.cal-day.partial { background: var(--amber-light); border-color: var(--amber); color: var(--amber); }
-.cal-day-score { font-size: 9px; font-weight: 400; opacity: 0.7; margin-top: 1px; }
-
-/* PHASES */
-.phase-card {
-  border-left: 3px solid var(--blue);
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  background: white;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  border-top: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.phase-name { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
-.phase-days { font-size: 12px; color: var(--text3); }
-
-/* METRICS */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-.metric-item { }
-.metric-label { font-size: 11px; color: var(--text3); margin-bottom: 3px; }
-.metric-input {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  font-size: 14px;
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  outline: none;
-}
-.metric-input:focus { border-color: var(--blue); }
-.metric-input-full {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  font-size: 14px;
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  outline: none;
-  margin-top: 8px;
+/* ANIMATIONS */
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.section.active .card,.section.active .today-hero,.section.active .coach-box,.section.active .score-section{
+  animation:fadeIn .25s ease both;
 }
 
-/* SUMMARY CARDS */
-.summary-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-.summary-card {
-  background: var(--bg2);
-  border-radius: var(--radius-sm);
-  padding: 12px;
-  text-align: center;
-}
-.summary-val {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1;
-}
-.summary-lbl {
-  font-size: 11px;
-  color: var(--text3);
-  margin-top: 3px;
-}
-
-/* PROGRESS BARS */
-.prog-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-.prog-lbl { font-size: 12px; color: var(--text2); width: 120px; flex-shrink: 0; }
-.prog-bg { flex: 1; background: var(--bg2); border-radius: 4px; height: 8px; overflow: hidden; }
-.prog-fill { height: 100%; border-radius: 4px; transition: width .4s; }
-.prog-pct { font-size: 11px; color: var(--text3); width: 32px; text-align: right; }
-
-/* BUTTONS */
-.btn {
-  padding: 10px 20px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all .15s;
-}
-.btn-primary {
-  background: var(--blue);
-  color: white;
-  border: 1px solid var(--blue);
-}
-.btn-primary:hover { opacity: 0.9; }
-.btn-secondary {
-  background: white;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover { background: var(--bg2); }
-.btn-sm { padding: 7px 14px; font-size: 12px; }
-
-/* CHART */
-.chart-wrap { position: relative; width: 100%; height: 160px; margin-top: 8px; }
-
-/* RESOURCE PILL */
-.resource-pill {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 10px;
-  font-size: 11px;
-  margin: 3px 3px 0 0;
-  background: var(--blue-light);
-  color: var(--blue);
-  border: 1px solid var(--blue-mid);
-}
-
-/* INSIGHT BOX */
-.insight-box {
-  background: var(--amber-light);
-  border: 1px solid rgba(186,117,23,0.2);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  margin-top: 10px;
-}
-.insight-title { font-size: 11px; font-weight: 500; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.insight-text { font-size: 13px; color: var(--text2); line-height: 1.5; }
-
-/* CHECKLIST POST */
-.checklist-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 0;
-  font-size: 13px;
-  color: var(--text2);
-  border-bottom: 1px solid var(--bg2);
-}
-.checklist-item:last-child { border-bottom: none; }
-.check-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  flex-shrink: 0;
-}
-
-/* CHART CANVAS */
-canvas { display: block; }
-
-/* SCROLL */
-.scroll-hint {
-  text-align: center;
-  font-size: 11px;
-  color: var(--text3);
-  padding: 8px;
-}
-
-/* TAGS */
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 500;
-}
-.tag-blue { background: var(--blue-light); color: var(--blue); }
-.tag-green { background: var(--green-light); color: var(--green); }
-.tag-amber { background: var(--amber-light); color: var(--amber); }
-
-@media (max-width: 400px) {
-  .cal-grid { grid-template-columns: repeat(5, 1fr); }
-  .day-name { font-size: 17px; }
-  .score-num { font-size: 34px; }
+@media(max-width:380px){
+  .cal-grid{grid-template-columns:repeat(5,1fr);}
+  .today-day{font-size:26px;}
+  .metrics-2col{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div>
-    <div class="header-title">Viralize em 30 Dias</div>
-    <div class="header-sub">@joaoteixeira_re · RE/MAX D&D Group</div>
+<header class="site-header">
+  <div class="header-left">
+    <div class="header-brand">Viralize 30 Dias</div>
+    <div class="header-handle">@joaoteixeira_re · RE/MAX D&D Group</div>
   </div>
-  <div class="header-score" id="header-score">Dia 1</div>
-</div>
+  <div class="header-badge" id="header-badge">Dia 1</div>
+</header>
 
-<nav class="nav">
-  <button class="nav-btn active" onclick="showTab('hoje')">Hoje</button>
-  <button class="nav-btn" onclick="showTab('calendario')">Calendário</button>
-  <button class="nav-btn" onclick="showTab('metricas')">Métricas</button>
-  <button class="nav-btn" onclick="showTab('progresso')">Progresso</button>
-  <button class="nav-btn" onclick="showTab('recursos')">Recursos</button>
-</nav>
-
-<!-- TAB HOJE -->
-<div id="tab-hoje" class="section active">
+<!-- SECTION: HOJE -->
+<div id="sec-hoje" class="section active">
+<div class="max-w">
 
   <div class="day-nav-row">
-    <button class="day-arrow" onclick="changeDay(-1)">←</button>
-    <div class="day-info">
-      <div class="day-number" id="day-number">Dia 1 de 30</div>
-      <div class="day-name" id="day-name">—</div>
-      <span class="day-phase" id="day-phase">—</span>
+    <button class="day-arrow" id="btn-prev" onclick="changeDay(-1)">←</button>
+    <div class="day-counter" id="day-counter">DIA 1 DE 30</div>
+    <button class="day-arrow" id="btn-next" onclick="changeDay(1)">→</button>
+  </div>
+
+  <div class="today-hero" id="today-hero">
+    <div class="today-phase" id="today-phase">FASE 1 · FUNDAÇÃO</div>
+    <div class="today-day" id="today-day">Dia 1</div>
+    <div class="today-title" id="today-title">Organizar a casinha</div>
+    <div class="today-meta" id="today-meta"></div>
+  </div>
+
+  <div class="coach-box">
+    <div class="coach-label">Coach · Para ti, João</div>
+    <div class="coach-text" id="coach-text">—</div>
+  </div>
+
+  <div class="score-section">
+    <div class="score-ring-wrap">
+      <svg width="72" height="72" viewBox="0 0 72 72">
+        <circle class="score-ring-bg" cx="36" cy="36" r="30"/>
+        <circle class="score-ring-fill" id="score-ring" cx="36" cy="36" r="30" stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
+      </svg>
+      <div class="score-center">
+        <div class="score-big" id="score-num">0</div>
+        <div class="score-sub">/ 10</div>
+      </div>
     </div>
-    <button class="day-arrow" onclick="changeDay(1)">→</button>
+    <div class="score-info">
+      <div class="score-msg" id="score-msg">Começa a marcar tarefas</div>
+      <div class="score-detail" id="score-detail">0 de 0 tarefas · 0 ciclos GRP</div>
+    </div>
   </div>
 
-  <!-- Context/Coach note -->
-  <div class="card" id="coach-card">
-    <div class="context-label">Nota do coach</div>
-    <div class="context-text" id="coach-note">—</div>
-  </div>
-
-  <!-- Tasks -->
+  <!-- TASKS -->
   <div class="card">
-    <div class="card-title">Tarefas do dia</div>
-    <div id="tasks-list"></div>
+    <div class="card-header" onclick="toggleCard('tasks-body','tasks-toggle')">
+      <div class="card-title">✅ Tarefas do dia</div>
+      <div class="card-toggle open" id="tasks-toggle">▾</div>
+    </div>
+    <div class="card-body" id="tasks-body">
+      <div class="task-list" id="tasks-list"></div>
+    </div>
   </div>
 
   <!-- GRP -->
   <div class="card" id="grp-card">
-    <div class="card-title">Rotina GRP</div>
-    <div class="card-sub">Garimpar → Roteirizar → Postar. Marca cada ciclo completo.</div>
-    <div class="grp-container" id="grp-buttons"></div>
-  </div>
-
-  <!-- Score -->
-  <div class="card">
-    <div class="card-title">Score do dia</div>
-    <div class="score-display">
-      <div class="score-num" id="score-val">0</div>
-      <div class="score-total">/10</div>
+    <div class="card-header" onclick="toggleCard('grp-body','grp-toggle')">
+      <div class="card-title">🔁 Rotina GRP</div>
+      <div class="card-toggle open" id="grp-toggle">▾</div>
     </div>
-    <div class="score-label" id="score-msg">Começa a marcar tarefas</div>
-    <div class="score-bar-bg">
-      <div class="score-bar-fill" id="score-bar" style="width:0%"></div>
+    <div class="card-body" id="grp-body">
+      <div class="alert alert-blue" style="margin-bottom:10px;">
+        <div class="alert-title">O ciclo</div>
+        Garimpar → Transcrever → Adaptar ao teu estilo → Treinar → Gravar → Postar → repetir
+      </div>
+      <div class="grp-grid" id="grp-buttons"></div>
     </div>
   </div>
 
-  <!-- Notes -->
+  <!-- MATERIAL DO DIA -->
   <div class="card">
-    <div class="card-title">Notas do dia</div>
-    <textarea class="note-area" id="note-area" placeholder="O que aprendeste, o que correu bem, bloqueios, ideias de vídeo..."></textarea>
-    <div style="margin-top:8px; display:flex; gap:8px;">
-      <button class="btn btn-primary btn-sm" onclick="saveNote()">Guardar</button>
+    <div class="card-header" onclick="toggleCard('material-body','material-toggle')">
+      <div class="card-title">📚 Material do dia</div>
+      <div class="card-toggle" id="material-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="material-body">
+      <div id="material-content"></div>
+    </div>
+  </div>
+
+  <!-- NOTAS -->
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('notes-body','notes-toggle')">
+      <div class="card-title">📝 Notas do dia</div>
+      <div class="card-toggle" id="notes-toggle">▾</div>
+    </div>
+    <div class="card-body" id="notes-body">
+      <textarea class="note-area" id="note-area" placeholder="O que aprendeste, o que correu bem, bloqueios, ideias de vídeo..."></textarea>
+      <div style="margin-top:10px;display:flex;gap:8px;">
+        <button class="btn btn-primary btn-sm" id="save-note-btn" onclick="saveNote()">Guardar nota</button>
+      </div>
     </div>
   </div>
 
 </div>
-
-<!-- TAB CALENDÁRIO -->
-<div id="tab-calendario" class="section">
-  <div class="card">
-    <div class="card-title">30 dias de desafio</div>
-    <div class="card-sub" style="margin-bottom:10px">Verde completo · Azul hoje · Amarelo parcial · Branco pendente</div>
-    <div class="cal-grid" id="cal-grid"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Fases do desafio</div>
-    <div id="phases-list"></div>
-  </div>
 </div>
 
-<!-- TAB MÉTRICAS -->
-<div id="tab-metricas" class="section">
+<!-- SECTION: CALENDÁRIO -->
+<div id="sec-calendario" class="section">
+<div class="max-w">
+  <div class="section-label">Os teus 30 dias</div>
   <div class="card">
-    <div class="card-title">Registo diário — @joaoteixeira_re</div>
-    <div class="card-sub">Preenche após cada post. Dia <span id="metrics-day-label">1</span>.</div>
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <div class="metric-label">Seguidores</div>
-        <input class="metric-input" id="m-followers" type="number" placeholder="0">
+    <div class="card-body">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:var(--text3);">
+        <span>🟢 Completo (7+)</span>
+        <span>🟡 Parcial (4-6)</span>
+        <span>🔵 Hoje</span>
+        <span>⬜ Pendente</span>
       </div>
-      <div class="metric-item">
-        <div class="metric-label">Alcance</div>
-        <input class="metric-input" id="m-reach" type="number" placeholder="0">
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">Likes</div>
-        <input class="metric-input" id="m-likes" type="number" placeholder="0">
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">Comentários</div>
-        <input class="metric-input" id="m-comments" type="number" placeholder="0">
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">Saves</div>
-        <input class="metric-input" id="m-saves" type="number" placeholder="0">
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">Shares (maior peso)</div>
-        <input class="metric-input" id="m-shares" type="number" placeholder="0">
-      </div>
-    </div>
-    <div class="metric-label">Formato usado</div>
-    <input class="metric-input-full" id="m-format" type="text" placeholder="ex: talking head, react, storytelling...">
-    <div style="margin-top:12px;">
-      <button class="btn btn-primary btn-sm" onclick="saveMetrics()">Guardar métricas</button>
+      <div class="cal-grid" id="cal-grid"></div>
     </div>
   </div>
 
-  <div class="insight-box">
-    <div class="insight-title">Prioridade de métricas (Lipe)</div>
-    <div class="insight-text">Shares &gt; Comentários &gt; Likes. Quanto maior nessa ordem, maior a probabilidade de teres acertado gatilhos emocionais e ganchos virais.</div>
-  </div>
+  <div class="section-label">Fases</div>
+  <div id="phases-container"></div>
 
-  <div class="card" style="margin-top:12px;">
-    <div class="card-title">Checklist pós-postagem</div>
-    <div class="checklist-item"><div class="check-dot"></div>Alcance está acima da média?</div>
-    <div class="checklist-item"><div class="check-dot"></div>Retenção passou de 50%?</div>
-    <div class="checklist-item"><div class="check-dot"></div>Saves superam likes?</div>
-    <div class="checklist-item"><div class="check-dot"></div>Engajamento total &gt; 5%?</div>
-    <div class="checklist-item"><div class="check-dot"></div>Houve novos seguidores?</div>
-    <div class="checklist-item"><div class="check-dot"></div>De onde veio o tráfego? (objetivo: Explorar)</div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Acumulado</div>
-    <div class="summary-grid" id="metrics-summary"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Evolução de seguidores</div>
-    <div class="chart-wrap"><canvas id="followers-chart" role="img" aria-label="Gráfico de seguidores por dia"></canvas></div>
-  </div>
+</div>
 </div>
 
-<!-- TAB PROGRESSO -->
-<div id="tab-progresso" class="section">
-  <div class="summary-grid" id="overview-summary"></div>
+<!-- SECTION: MÉTRICAS -->
+<div id="sec-metricas" class="section">
+<div class="max-w">
+
+  <div class="section-label">Registo diário · Dia <span id="met-day">1</span></div>
 
   <div class="card">
-    <div class="card-title">Progresso por fase</div>
-    <div id="phase-progress"></div>
+    <div class="card-body">
+      <div class="metrics-2col">
+        <div class="metric-field"><div class="metric-label">Seguidores</div><input class="metric-input" id="m-followers" type="number" placeholder="0"></div>
+        <div class="metric-field"><div class="metric-label">Alcance</div><input class="metric-input" id="m-reach" type="number" placeholder="0"></div>
+        <div class="metric-field"><div class="metric-label">Likes</div><input class="metric-input" id="m-likes" type="number" placeholder="0"></div>
+        <div class="metric-field"><div class="metric-label">Comentários</div><input class="metric-input" id="m-comments" type="number" placeholder="0"></div>
+        <div class="metric-field"><div class="metric-label">Saves</div><input class="metric-input" id="m-saves" type="number" placeholder="0"></div>
+        <div class="metric-field"><div class="metric-label">Shares ⭐</div><input class="metric-input" id="m-shares" type="number" placeholder="0"></div>
+      </div>
+      <div class="metric-label">Formato usado</div>
+      <input class="metric-input" id="m-format" type="text" placeholder="ex: chamada de vídeo, react, storytelling..." style="margin-top:4px;width:100%;">
+      <div style="margin-top:12px;"><button class="btn btn-primary btn-sm" id="save-metrics-btn" onclick="saveMetrics()">Guardar</button></div>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <div class="alert-title">Prioridade de métricas (Lipe)</div>
+    Shares &gt; Comentários &gt; Likes. Nesta ordem. Quanto maior, mais provável teres acertado em gatilhos emocionais e ganchos virais. O Explorar é o objetivo principal de origem de tráfego.
   </div>
 
   <div class="card">
-    <div class="card-title">Score diário</div>
-    <div class="chart-wrap"><canvas id="score-chart" role="img" aria-label="Score diário ao longo do desafio"></canvas></div>
+    <div class="card-header" onclick="toggleCard('postchecklist-body','postchecklist-toggle')">
+      <div class="card-title">✓ Checklist pós-postagem</div>
+      <div class="card-toggle" id="postchecklist-toggle">▾</div>
+    </div>
+    <div class="card-body" id="postchecklist-body">
+      <div class="post-check"><div class="post-dot"></div>Alcance está acima da tua média?</div>
+      <div class="post-check"><div class="post-dot"></div>Retenção passou de 50%?</div>
+      <div class="post-check"><div class="post-dot"></div>Saves superam os likes?</div>
+      <div class="post-check"><div class="post-dot"></div>Engajamento total &gt; 5%? [(Likes+Comentários+Shares+Saves) ÷ Alcance × 100]</div>
+      <div class="post-check"><div class="post-dot"></div>Houve novos seguidores?</div>
+      <div class="post-check"><div class="post-dot"></div>Tráfego veio do Explorar ou Reels?</div>
+      <div class="post-check"><div class="post-dot"></div>Que padrão aparece nos vídeos com melhor performance?</div>
+    </div>
   </div>
 
   <div class="card">
-    <div class="card-title">As 3 perguntas finais (Dia 27)</div>
-    <div class="card-sub">Para quando chegares ao Dia 27</div>
-    <div style="margin-bottom:10px;">
-      <div class="metric-label">O que aprendi nestes 30 dias?</div>
-      <textarea class="note-area" id="q1" placeholder="..."></textarea>
+    <div class="card-header" onclick="toggleCard('metsum-body','metsum-toggle')">
+      <div class="card-title">📊 Acumulado</div>
+      <div class="card-toggle open" id="metsum-toggle">▾</div>
     </div>
-    <div style="margin-bottom:10px;">
-      <div class="metric-label">O que faria diferente se recomeçasse hoje?</div>
-      <textarea class="note-area" id="q2" placeholder="..."></textarea>
-    </div>
-    <div>
-      <div class="metric-label">Qual foi o meu maior desbloqueio?</div>
-      <textarea class="note-area" id="q3" placeholder="..."></textarea>
-    </div>
-    <div style="margin-top:8px;">
-      <button class="btn btn-primary btn-sm" onclick="saveReflections()">Guardar</button>
+    <div class="card-body" id="metsum-body">
+      <div class="sum-grid" id="metrics-summary"></div>
+      <div class="chart-wrap"><canvas id="followers-chart" role="img" aria-label="Evolução de seguidores"></canvas></div>
     </div>
   </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('metricsref-body','metricsref-toggle')">
+      <div class="card-title">📖 Como cruzar as métricas</div>
+      <div class="card-toggle" id="metricsref-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="metricsref-body">
+      <div class="alert alert-blue" style="margin-bottom:8px;"><div class="alert-title">Alto alcance, baixa retenção</div>Gancho bom, conteúdo fraco. Melhora o meio do vídeo.</div>
+      <div class="alert alert-amber" style="margin-bottom:8px;"><div class="alert-title">Baixo alcance, alta retenção</div>Conteúdo bom, início fraco. Trabalha o gancho e a thumbnail.</div>
+      <div class="alert alert-blue" style="margin-bottom:8px;"><div class="alert-title">Boa retenção, poucos saves</div>Interessante mas pouco útil. Adiciona valor prático.</div>
+      <div class="alert alert-amber"><div class="alert-title">Muitos saves, poucos shares</div>Conteúdo muito técnico. Faz versões mais leves e inspiracionais.</div>
+    </div>
+  </div>
+
+</div>
 </div>
 
-<!-- TAB RECURSOS -->
-<div id="tab-recursos" class="section">
+<!-- SECTION: PROGRESSO -->
+<div id="sec-progresso" class="section">
+<div class="max-w">
 
+  <div class="section-label">Visão geral</div>
+  <div class="sum-grid" id="overview-cards"></div>
+
+  <div class="section-label">Por fase</div>
   <div class="card">
-    <div class="card-title">A tua frase base</div>
-    <div class="card-sub">Estrutura: "Eu ajudo [audiência] a alcançar [desejo] através de [solução/conteúdo]"</div>
-    <div class="insight-box" style="background:var(--blue-light); border-color:var(--blue-mid);">
-      <div class="insight-title" style="color:var(--blue)">O teu caso — @joaoteixeira_re</div>
-      <div class="insight-text">Ajudo pessoas que querem comprar ou vender casa em Lisboa a tomar melhores decisões, mostrando o que ninguém te conta — através da minha história de vendedor de rua que virou agente.</div>
-    </div>
-    <textarea class="note-area" id="frase-base" placeholder="Escreve aqui a tua versão definitiva..." style="margin-top:10px;"></textarea>
-    <button class="btn btn-secondary btn-sm" style="margin-top:8px;" onclick="saveFrase()">Guardar frase</button>
+    <div class="card-body" id="phase-progress"></div>
   </div>
 
+  <div class="section-label">Score diário</div>
   <div class="card">
-    <div class="card-title">Os teus 6 temas mãe</div>
-    <div class="card-sub">Tópicos que dominas e consegues associar ao imobiliário e à tua história</div>
-    <div id="temas-list">
-      <div class="insight-box" style="background:var(--bg2); border-color:var(--border);">
-        <div class="insight-text" style="color:var(--text2);">
-          Sugestões para @joaoteixeira_re:<br>
+    <div class="card-body">
+      <div class="chart-wrap"><canvas id="score-chart" role="img" aria-label="Score diário"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-label">As 3 perguntas (Dia 27)</div>
+  <div class="card">
+    <div class="card-body">
+      <div style="margin-bottom:12px;">
+        <div class="metric-label">O que aprendi nestes 30 dias?</div>
+        <textarea class="note-area" id="q1" placeholder="..."></textarea>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div class="metric-label">O que faria diferente se recomeçasse hoje?</div>
+        <textarea class="note-area" id="q2" placeholder="..."></textarea>
+      </div>
+      <div style="margin-bottom:12px;">
+        <div class="metric-label">Qual foi o meu maior desbloqueio?</div>
+        <textarea class="note-area" id="q3" placeholder="..."></textarea>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="saveReflections()">Guardar reflexões</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- SECTION: RECURSOS -->
+<div id="sec-recursos" class="section">
+<div class="max-w">
+
+  <div class="section-label">A tua identidade</div>
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('identity-body','identity-toggle')">
+      <div class="card-title">🎯 Frase base & Temas mãe</div>
+      <div class="card-toggle open" id="identity-toggle">▾</div>
+    </div>
+    <div class="card-body" id="identity-body">
+      <div class="alert alert-blue" style="margin-bottom:12px;">
+        <div class="alert-title">Estrutura (Lipe)</div>
+        "Eu ajudo [audiência] a alcançar [desejo] através de [solução/conteúdo]"
+      </div>
+      <div class="alert alert-green" style="margin-bottom:12px;">
+        <div class="alert-title">Sugestão para @joaoteixeira_re</div>
+        "Ajudo pessoas que querem comprar ou vender casa em Lisboa a tomar melhores decisões, mostrando o que os outros agentes não te contam — através da minha história de vendedor de rua que virou agente."
+      </div>
+      <div class="metric-label" style="margin-bottom:4px;">A tua versão</div>
+      <textarea class="note-area" id="frase-base" placeholder="Escreve aqui..."></textarea>
+      <button class="btn btn-outline btn-sm" style="margin-top:8px;" onclick="saveFrase()">Guardar</button>
+      <div style="margin-top:16px;">
+        <div class="metric-label" style="margin-bottom:6px;">6 temas mãe sugeridos</div>
+        <div class="alert alert-blue">
           1. Imobiliário (dicas, bastidores, processo)<br>
           2. Vendas e persuasão (do desafio 500 copos)<br>
           3. Empreendedorismo / começar do zero<br>
@@ -716,459 +655,694 @@ canvas { display: block; }
           5. Arte e detalhe (Little Diamond → "o detalhe mau destrói")<br>
           6. Lifestyle / crescimento pessoal
         </div>
-      </div>
-    </div>
-    <textarea class="note-area" id="temas-area" placeholder="Os teus 6 temas definitivos..." style="margin-top:10px;"></textarea>
-    <button class="btn btn-secondary btn-sm" style="margin-top:8px;" onclick="saveTemas()">Guardar temas</button>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Fluxograma GRP</div>
-    <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
-      <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg2); border-radius:var(--radius-sm);">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;">1</div>
-        <div><div style="font-size:13px;font-weight:500;">Garimpar</div><div style="font-size:12px;color:var(--text3);">Salvar vídeo viral nas pastas</div></div>
-      </div>
-      <div style="text-align:center;color:var(--text3);font-size:16px;">↓</div>
-      <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg2); border-radius:var(--radius-sm);">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;">2</div>
-        <div><div style="font-size:13px;font-weight:500;">Transcrever</div><div style="font-size:12px;color:var(--text3);">Usar IA para transcrever o vídeo garimpado</div></div>
-      </div>
-      <div style="text-align:center;color:var(--text3);font-size:16px;">↓</div>
-      <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg2); border-radius:var(--radius-sm);">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;">3</div>
-        <div><div style="font-size:13px;font-weight:500;">Adaptar</div><div style="font-size:12px;color:var(--text3);">Criar roteiro no teu estilo, respeitando gancho e formato</div></div>
-      </div>
-      <div style="text-align:center;color:var(--text3);font-size:16px;">↓</div>
-      <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--bg2); border-radius:var(--radius-sm);">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;">4</div>
-        <div><div style="font-size:13px;font-weight:500;">Treinar e gravar</div><div style="font-size:12px;color:var(--text3);">Pratica antes, depois grava</div></div>
-      </div>
-      <div style="text-align:center;color:var(--text3);font-size:16px;">↓</div>
-      <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--green-light); border-radius:var(--radius-sm); border:1px solid rgba(29,158,117,0.2);">
-        <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;">5</div>
-        <div><div style="font-size:13px;font-weight:500;color:var(--green);">Postar</div><div style="font-size:12px;color:var(--text3);">E volta ao início</div></div>
+        <textarea class="note-area" id="temas-area" placeholder="Os teus 6 temas definitivos..." style="margin-top:8px;"></textarea>
+        <button class="btn btn-outline btn-sm" style="margin-top:8px;" onclick="saveTemas()">Guardar</button>
       </div>
     </div>
   </div>
 
+  <div class="section-label">Metodologia</div>
   <div class="card">
-    <div class="card-title">Estrutura de vídeo viral</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px;">
-      <div style="background:var(--blue-light);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--blue);font-weight:500;">Gancho</div>
-        <div style="font-size:11px;color:var(--text3);margin-top:4px;">0–5 seg<br>Loop de curiosidade</div>
+    <div class="card-header" onclick="toggleCard('grpref-body','grpref-toggle')">
+      <div class="card-title">🔁 Fluxograma GRP completo</div>
+      <div class="card-toggle" id="grpref-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="grpref-body">
+      <div class="grp-step"><div class="grp-num">1</div><div><div class="grp-step-name">Garimpar</div><div class="grp-step-desc">Explorar o IG, TikTok, YouTube. Filtrar por shares &gt; comentários &gt; likes. Salvar em pastas por tema/formato.</div></div></div>
+      <div class="grp-step"><div class="grp-num">2</div><div><div class="grp-step-name">Transcrever</div><div class="grp-step-desc">Usar ferramenta de IA (ex: Whisper, Otter) para transcrever o vídeo garimpado. Guardar num documento.</div></div></div>
+      <div class="grp-step"><div class="grp-num">3</div><div><div class="grp-step-name">Adaptar</div><div class="grp-step-desc">Criar o teu roteiro a partir do vídeo. Respeita o gancho e o formato, mas usa a tua voz e o teu contexto de imobiliário.</div></div></div>
+      <div class="grp-step"><div class="grp-num">4</div><div><div class="grp-step-name">Treinar</div><div class="grp-step-desc">Lê o roteiro em voz alta 2-3 vezes antes de gravar. Não memoriza palavra a palavra — interioriza a ideia.</div></div></div>
+      <div class="grp-step" style="background:var(--green-light);border:1px solid rgba(26,143,104,.2);"><div class="grp-num" style="background:var(--green);">5</div><div><div class="grp-step-name" style="color:var(--green);">Gravar e Postar</div><div class="grp-step-desc">Grava. Posta. Volta ao passo 1. A constância é o único segredo.</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('structure-body','structure-toggle')">
+      <div class="card-title">🎬 Estrutura do vídeo viral</div>
+      <div class="card-toggle" id="structure-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="structure-body">
+      <div class="structure-row">
+        <div class="structure-box" style="background:var(--blue-light);">
+          <div class="structure-box-title" style="color:var(--blue);">Gancho</div>
+          <div class="structure-box-sub">0–5 seg<br>Loop de curiosidade<br>Não entrega tudo</div>
+        </div>
+        <div class="structure-box" style="background:var(--bg2);">
+          <div class="structure-box-title">Conteúdo</div>
+          <div class="structure-box-sub">70–80%<br>Rir ou Aprender<br>Novo a cada 2-3 seg</div>
+        </div>
+        <div class="structure-box" style="background:var(--green-light);">
+          <div class="structure-box-title" style="color:var(--green);">Recompensa</div>
+          <div class="structure-box-sub">Fecha o ciclo<br>Entrega o prometido<br>Gera partilhas</div>
+        </div>
       </div>
-      <div style="background:var(--bg2);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--text);font-weight:500;">Conteúdo</div>
-        <div style="font-size:11px;color:var(--text3);margin-top:4px;">70–80%<br>Rir ou Aprender</div>
-      </div>
-      <div style="background:var(--green-light);border-radius:var(--radius-sm);padding:12px;text-align:center;">
-        <div style="font-family:'Fraunces',serif;font-size:18px;color:var(--green);font-weight:500;">Recompensa</div>
-        <div style="font-size:11px;color:var(--text3);margin-top:4px;">Fecha o ciclo<br>Gera partilhas</div>
+      <div class="alert alert-amber" style="margin-top:12px;">
+        <div class="alert-title">Antes de postar — pergunta sempre</div>
+        "Este vídeo segue Gancho → Conteúdo → Recompensa?"
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">5 Emoções base</div>
-    <div style="display:flex;flex-direction:column;gap:6px;">
-      <div style="display:flex;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--radius-sm);align-items:center;">
-        <span style="font-size:20px;">😢</span>
-        <div><div style="font-size:13px;font-weight:500;">Tristeza</div><div style="font-size:12px;color:var(--text3);">Cria identificação → confiança → compra</div></div>
-      </div>
-      <div style="display:flex;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--radius-sm);align-items:center;">
-        <span style="font-size:20px;">😡</span>
-        <div><div style="font-size:13px;font-weight:500;">Raiva</div><div style="font-size:12px;color:var(--text3);">A emoção mais partilhável da internet</div></div>
-      </div>
-      <div style="display:flex;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--radius-sm);align-items:center;">
-        <span style="font-size:20px;">😨</span>
-        <div><div style="font-size:13px;font-weight:500;">Medo</div><div style="font-size:12px;color:var(--text3);">Gera retenção imediata e urgência</div></div>
-      </div>
-      <div style="display:flex;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--radius-sm);align-items:center;">
-        <span style="font-size:20px;">🤢</span>
-        <div><div style="font-size:13px;font-weight:500;">Nojo</div><div style="font-size:12px;color:var(--text3);">Pouco usado = mais potente. Abre espaço para o novo</div></div>
-      </div>
-      <div style="display:flex;gap:10px;padding:8px 12px;background:var(--bg2);border-radius:var(--radius-sm);align-items:center;">
-        <span style="font-size:20px;">😄</span>
-        <div><div style="font-size:13px;font-weight:500;">Alegria</div><div style="font-size:12px;color:var(--text3);">Dopamina pura. A compra vira consequência</div></div>
-      </div>
+    <div class="card-header" onclick="toggleCard('emotions-body','emotions-toggle')">
+      <div class="card-title">🧠 5 Emoções base</div>
+      <div class="card-toggle" id="emotions-toggle">▾</div>
     </div>
-    <div class="insight-box" style="margin-top:10px;">
-      <div class="insight-title">Regra de ouro</div>
-      <div class="insight-text">Antes de gravar: "Que emoção quero despertar? Essa emoção combina com o formato que estou a usar?"</div>
+    <div class="card-body collapsed" id="emotions-body">
+      <div class="alert alert-blue" style="margin-bottom:12px;">
+        <div class="alert-title">Regra de ouro</div>
+        Antes de gravar: "Que emoção quero despertar? Estou a entregá-la com o formato certo?" A venda é uma emoção disfarçada de decisão racional.
+      </div>
+      <div class="emotion-card"><div class="emotion-emoji">😢</div><div><div class="emotion-name">Tristeza</div><div class="emotion-desc">Conta histórias de fracasso, superação, bastidores. Mostra o lado humano.</div><div class="emotion-sell">→ Cria identificação → confiança → compra</div></div></div>
+      <div class="emotion-card"><div class="emotion-emoji">😡</div><div><div class="emotion-name">Raiva</div><div class="emotion-desc">Questiona o status quo. A mais partilhável da internet. Gera comentários.</div><div class="emotion-sell">→ Desperta desejo de mudança → compra soluções</div></div></div>
+      <div class="emotion-card"><div class="emotion-emoji">😨</div><div><div class="emotion-name">Medo</div><div class="emotion-desc">Mostra o que a pessoa perde se não agir. Usa suspense e plot twist.</div><div class="emotion-sell">→ Medo de perder &gt; desejo de ganhar → ação imediata</div></div></div>
+      <div class="emotion-card"><div class="emotion-emoji">🤢</div><div><div class="emotion-name">Nojo</div><div class="emotion-desc">Pouco usado = muito potente. Usa contraste: o feio virando bonito.</div><div class="emotion-sell">→ Rejeição da ideia antiga → abertura para o novo</div></div></div>
+      <div class="emotion-card"><div class="emotion-emoji">😄</div><div><div class="emotion-name">Alegria</div><div class="emotion-desc">Conquistas, humor, energia. O cérebro vicia e quer mais.</div><div class="emotion-sell">→ Dopamina pura → a compra vira consequência</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Ferramentas</div>
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('hooks-body','hooks-toggle')">
+      <div class="card-title">🎣 Ganchos prontos — imobiliário PT</div>
+      <div class="card-toggle" id="hooks-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="hooks-body">
+      <div class="alert alert-blue" style="margin-bottom:12px;">Clica em qualquer gancho para copiar.</div>
+      <div id="hooks-list"></div>
+      <div style="margin-top:12px;"><div class="section-label" style="margin-top:0;">Ganchos genéricos do Lipe</div></div>
+      <div id="hooks-generic"></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">Formatos de vídeo</div>
-    <div id="formats-list" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Ganchos prontos — adaptados ao imobiliário</div>
-    <div id="hooks-list" style="display:flex;flex-direction:column;gap:6px;"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Mensagem padrão</div>
-    <div class="context-box">
-      <div class="context-label">Sugestão para @joaoteixeira_re</div>
-      <div class="context-text">"Olá! Vi que interagiste com um dos meus vídeos. Posto sobre imobiliário em Lisboa — o lado que ninguém te mostra. Se fizer sentido, dá uma vista de olhos no perfil!"</div>
+    <div class="card-header" onclick="toggleCard('formats-body','formats-toggle')">
+      <div class="card-title">🎬 11 Formatos de vídeo</div>
+      <div class="card-toggle" id="formats-toggle">▾</div>
     </div>
-    <textarea class="note-area" id="msg-padrao" placeholder="A tua versão definitiva..."></textarea>
-    <button class="btn btn-secondary btn-sm" style="margin-top:8px;" onclick="saveMsgPadrao()">Guardar</button>
+    <div class="card-body collapsed" id="formats-body">
+      <div id="formats-list"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('tests-body','tests-toggle')">
+      <div class="card-title">🧪 Testes de vídeo</div>
+      <div class="card-toggle" id="tests-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="tests-body">
+      <div id="tests-list"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggleCard('msg-body','msg-toggle')">
+      <div class="card-title">💬 Mensagem padrão</div>
+      <div class="card-toggle" id="msg-toggle">▾</div>
+    </div>
+    <div class="card-body collapsed" id="msg-body">
+      <div class="alert alert-blue" style="margin-bottom:10px;">
+        <div class="alert-title">O que é</div>
+        Mensagem que envias a quem interagiu com o teu conteúdo mas ainda não te segue. Simples, direto, sem parecer spam.
+      </div>
+      <div class="alert alert-green" style="margin-bottom:10px;">
+        <div class="alert-title">Exemplo do Lipe</div>
+        "Oi tudo bem! Vi que curtiu um reels meu, dá uma olhadinha nos outros! Tem vários massa! To com objetivo de chegar aos 200k seguidores! Se gostar de algum outro já segue!"
+      </div>
+      <div class="alert alert-amber" style="margin-bottom:10px;">
+        <div class="alert-title">Sugestão para @joaoteixeira_re</div>
+        "Olá! Vi que interagiste com um dos meus vídeos. Posto sobre imobiliário em Lisboa — o lado que os outros agentes não mostram. Se fizer sentido, dá uma vista de olhos no perfil!"
+      </div>
+      <div class="metric-label" style="margin-bottom:4px;">A tua versão definitiva</div>
+      <textarea class="note-area" id="msg-padrao" placeholder="Escreve aqui..."></textarea>
+      <button class="btn btn-outline btn-sm" style="margin-top:8px;" onclick="saveMsgPadrao()">Guardar</button>
+    </div>
   </div>
 
 </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" onclick="showSection('hoje',this)">
+    <span class="nav-icon">📅</span>
+    <span class="nav-label">HOJE</span>
+  </button>
+  <button class="nav-item" onclick="showSection('calendario',this)">
+    <span class="nav-icon">🗓</span>
+    <span class="nav-label">CALENDÁRIO</span>
+  </button>
+  <button class="nav-item" onclick="showSection('metricas',this)">
+    <span class="nav-icon">📈</span>
+    <span class="nav-label">MÉTRICAS</span>
+  </button>
+  <button class="nav-item" onclick="showSection('progresso',this)">
+    <span class="nav-icon">🏆</span>
+    <span class="nav-label">PROGRESSO</span>
+  </button>
+  <button class="nav-item" onclick="showSection('recursos',this)">
+    <span class="nav-icon">📖</span>
+    <span class="nav-label">RECURSOS</span>
+  </button>
+</nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
+// ─── DATA ───
 const DAYS = [
-  {title:"Organizar a casinha",phase:"Fundação",grp:0,tasks:["Responder Mapa da Clareza","Responder DNA de Influenciador (viral-dna-quiz.lovable.app)","Ajustar bio com a tua frase base","Parar de seguir e resetar preferências do IG","Escolher 6 temas mãe","Postar 1 vídeo sobre um dos 6 temas — não precisa ser perfeito"],coach:"O teu primeiro vídeo vai sair mau. É o objetivo. O Lipe diz que o dele era péssimo. O objetivo é vencer a barreira do fazer. Não é perfeição, é coragem. Posta."},
-  {title:"Condicionando o algoritmo",phase:"Fundação",grp:0,tasks:["Seguir 10–30 perfis inspiradores do nicho imobiliário","Condicionar o algoritmo (não tenho interesse / bloquear o que não serve)","Separar vídeos em pastas: imobiliário, vendas, lifestyle, motivação, humor, notícias","Postar 1 vídeo"],coach:"O assunto mãe não se escolhe hoje. Vais descobrindo pela interação. O Lipe usa 'relacionamento' para falar de qualquer coisa — o teu pode ser 'o detalhe' ou 'vendas'. Experimenta e observa."},
-  {title:"Entendendo formatos de vídeo",phase:"Fundação",grp:0,tasks:["Estudar os 11 formatos disponíveis no PDF","Selecionar 5 formatos que gostas / consegues fazer","Garimpar 2 vídeos de cada formato escolhido e salvar em pastas","Gravar 3 minutos formato chamada de vídeo (papo de amigo)","Transformar os 3 min em 3 vídeos de 1 min e postar o melhor"],coach:"Chamada de vídeo é o teu formato mais natural como agente. Direto, sem filtros, como se falasses com um cliente. Começa por aí."},
-  {title:"Perdendo a vergonha",phase:"Fundação",grp:0,tasks:["Escrever um roteiro de vídeo (estrutura: Gancho → Conteúdo → Recompensa)","Ir a um local público em Lisboa e gravar como se já tivesses 200k seguidores","Preparar setup básico: luz natural, ângulo ao nível dos olhos, som"],coach:"Ninguém está a olhar. E os que estão — que se fodam. O Lipe foi julgado nas ruas de Salvador. Tu vendeste copos na Torre de Belém durante 50 dias. Já fizeste coisas muito mais difíceis do que gravar um Reel."},
-  {title:"Definindo a rotina",phase:"Fundação",grp:3,tasks:["Preencher planilha de planeamento semanal","Definir horário diário para garimpar vídeos","Estudar os ganchos virais e aplicar num vídeo de hoje","Postar 1 vídeo","Iniciar Rotina GRP 3x"],coach:"Garimpo é mais importante que produção. Os maiores criadores passam mais tempo a estudar vídeos do que a gravar. Shares > Comentários > Likes. É assim que defines o que está a funcionar."},
-  {title:"Testes",phase:"Fundação",grp:3,tasks:["Usar ganchos novos nos vídeos de hoje","Testar o mesmo vídeo com inícios diferentes (arquiva o que perde)","Rotina GRP 3x"],coach:"Hoje aplicas os ganchos do PDF. Escolhe pelo menos 1 gancho de curiosidade e 1 gancho de história. Testa os dois no mesmo tema. Compara o resultado em 24 horas."},
-  {title:"Entendendo as métricas",phase:"Métricas & Testes",grp:3,tasks:["Analisar métricas de todos os vídeos postados","Preencher secção de métricas neste tracker","Rotina GRP 3x"],coach:"Semana 1 feita. Vai ao separador Métricas e regista os dados dos teus vídeos. Olha para retenção, shares e seguidores ganhos por vídeo. O padrão começa a aparecer a partir do 7º dia."},
-  {title:"Rotina de criador",phase:"Métricas & Testes",grp:3,tasks:["Criar a tua mensagem padrão para não-seguidores (ver separador Recursos)","Definir rotina diária: responder comentários, directs, interagir","Rotina GRP 3x"],coach:"A mensagem padrão é simples: referencia o vídeo que a pessoa viu, diz o que fazes, convida a seguir. Sem parecer spam. Ver exemplos no separador Recursos."},
-  {title:"Garimpo externo",phase:"Métricas & Testes",grp:3,tasks:["Garimpar fora do Instagram: YouTube, TikTok, LinkedIn, filmes, conversas","Pelo menos 1 vídeo garimpado fora do Instagram","Rotina GRP 3x (com pelo menos 1 vídeo de fonte externa)"],coach:"Para imobiliário em Portugal: garimpa conteúdo de agentes no Brasil (fazem muito bem), canais de finanças pessoais (audiência que pensa em casa), lifestyle de Lisboa. Traz para a tua realidade."},
-  {title:"Testes avançados",phase:"Métricas & Testes",grp:3,tasks:["Aplicar pelo menos 1 teste do PDF de testes (corte no ápice, resultado no início vs final, teste de ganchos, interação, música, look)","Rotina GRP 3x"],coach:"Pega num vídeo que não performou bem. Refaz-o com um gancho diferente. O Lipe diz: às vezes só de mudar o começo o vídeo vira outro."},
-  {title:"Formato: Entrevista",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo entrevistando alguém (amigo, colega, cliente, desconhecido)","Planear semana de produção de conteúdo","Rotina GRP 3x"],coach:"Para imobiliário: entrevista um cliente sobre como foi o processo de comprar casa. As perguntas dele são os ganchos perfeitos. 'O que é que ninguém me disse antes de comprar?' — isso viraliza."},
-  {title:"Conteúdo de valor",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo falando para câmera com posicionamento ou dica prática","Analisar todos os vídeos feitos até hoje (qual performou melhor e porquê)","Comparar o 1º vídeo com o mais recente","Rotina GRP 3x"],coach:"Conteúdo de valor resolve a dor de alguém. Para imobiliário: '3 erros que as pessoas cometem quando compram casa em Lisboa', 'o que ninguém te diz sobre as comissões', 'como negociei o preço abaixo do pedido'. Posicionamento conta."},
-  {title:"Atuação",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo atuando (personagem, cena, POV — extra na produção de hoje)","Rotina GRP 3x"],coach:"Não precisas de figurino. Interpreta: o cliente que não quer ouvir o agente, o proprietário que pede preço absurdo, o banco que diz não. O Lipe diz que a atuação abre portas para marcas. E é muito mais divertido de fazer."},
-  {title:"Interagindo com outra pessoa",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo com outra pessoa (cliente, colega, amigo, Maria João)","Rotina GRP 3x"],coach:"A outra pessoa não precisa de aparecer. Podes gravar uma conversa com um cliente sobre um apartamento, podes mostrar uma visita com alguém. A câmara segura melhor quando há interação."},
-  {title:"Reagindo",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo reagindo a vídeo viral garimpado","Rotina GRP 3x"],coach:"3 tipos de react: (1) só a tua cara com o áudio a correr, (2) pausas + comentários teus, (3) ecrã dividido. Para imobiliário: reage a notícias sobre o mercado imobiliário português, erros de outros agentes, preços absurdos."},
-  {title:"Tutorial",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo formato tutorial — ensinar algo concreto","Rotina GRP 3x"],coach:"'Como se faz uma visita a uma casa em 10 minutos', 'como avaliar se um apartamento tem problemas antes de comprar', '3 perguntas que deves fazer ao banco antes de pedir crédito'. Não precisas de ser especialista — partilha o que sabes."},
-  {title:"Antes e depois",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo antes e depois / comparativo","Rotina GRP 3x"],coach:"Antes e depois = tudo comparativo. 'Lisboa antes do turismo vs agora', 'eu antes de entrar no imobiliário vs hoje', 'agentes que vendem bem vs agentes que não vendem'. O gancho é o contraste."},
-  {title:"Quadro ao fundo",phase:"Formatos Avançados",grp:3,tasks:["Gravar vídeo com quadro/papel/ecrã ao fundo explicando um assunto","Rotina GRP 3x"],coach:"Âncore visual. Escreve o título do vídeo num papel e segura-o. 'Os 3 bairros de Lisboa para comprar em 2025' — escreves os 3 no papel e explicas cada um. Simples e eficaz."},
-  {title:"Análise e melhoria",phase:"Formatos Avançados",grp:3,tasks:["Analisar todos os formatos feitos até agora","Identificar quais performaram melhor e porquê","Regravar em formato diferente os que não funcionaram","Revisar pastas de garimpo","Rotina GRP 3x"],coach:"Hoje é dia de diagnóstico. Faz uma lista: formato, resultado, facilidade de gravar. O Lipe diz que o formato que mais gosta de fazer costuma ser o que melhor performa. Qual é o teu?"},
-  {title:"Interação",phase:"Comunidade & Marcas",grp:3,tasks:["Interagir com 20+ perfis do nicho imobiliário e adjacentes","Responder todos os directs e comentários","Abrir caixinha de perguntas nos stories","Rotina GRP 3x"],coach:"Cresce sozinho é possível, mas conectar com outros criadores acelera. Comenta com substância. 'Adorei!' não cria comunidade. Uma pergunta genuína cria."},
-  {title:"Ajuste de rota",phase:"Comunidade & Marcas",grp:5,tasks:["Rever a rotina de criação (o que está a funcionar, o que não está)","Rever o assunto mãe (precisa mudar? está a funcionar?)","Identificar os conteúdos que melhor performaram e escalar esse tipo","Rotina GRP 5x"],coach:"Semana 3 completa. Hoje é o checkpoint mais importante do desafio. Pergunta-te: o que é que eu faria diferente nos últimos 21 dias? Essa resposta define os próximos 9."},
-  {title:"Regravação e vídeo longo",phase:"Comunidade & Marcas",grp:5,tasks:["Regravar vídeos que não funcionaram num formato novo","Gravar e postar 1 vídeo longo (+1min30s)","Rotina GRP 5x"],coach:"Vídeo longo para imobiliário: tour a um apartamento com narração, processo de negociação, dia na vida de um agente. Conteúdo que educa e retém. O Lipe diz que o vídeo longo dá seguidores de qualidade."},
-  {title:"Modelar a televisão",phase:"Comunidade & Marcas",grp:5,tasks:["1 vídeo sobre alimentação (podes associar ao lifestyle Lisboa)","1 vídeo sobre notícias (mercado imobiliário, taxas, preços)","1 vídeo sobre cultura / desporto","1 vídeo sobre relacionamento","1 vídeo sobre tema polémico (ex: 'os agentes imobiliários cobram demasiado?')"],coach:"O Lipe usa 'relacionamento' para falar de tudo. Tu podes usar 'o detalhe' ou 'vendas' para associar qualquer tema. Hoje testa 5 assuntos diferentes num único dia."},
-  {title:"Análise e criação",phase:"Comunidade & Marcas",grp:3,tasks:["Analisar insights e identificar melhores vídeos","Ler comentários dos teus vídeos e extrair ideias de novos conteúdos","Ler comentários de perfis similares e encontrar perguntas sem resposta","Rotina GRP 3x"],coach:"Os comentários são o teu briefing criativo gratuito. 'Quanto custa mesmo um agente em Portugal?' — se a tua audiência pergunta isso, é porque não há resposta boa. Dá-la tu."},
-  {title:"Sobre ti e marcas",phase:"Comunidade & Marcas",grp:3,tasks:["Gravar vídeo a contar a tua história (500 copos, Belém, a transição)","Mapear 5 marcas com quem gostarias de trabalhar","Rotina GRP 3x"],coach:"A tua história é ouro. Vendeste copos para a Dior. Abordaste 5000 pessoas nas ruas. Esse percurso é o que te diferencia de qualquer outro agente. O gancho: 'Gravei copos para a Dior. Agora vendo casas.'"},
-  {title:"Vídeos autênticos",phase:"Escala & Revisão",grp:3,tasks:["Criar uma série repetível de vídeos autênticos teus","Fazer teste de carrossel com melhores vídeos da semana ou do mês","Rotina GRP 3x"],coach:"Série para @joaoteixeira_re: 'O detalhe que destrói' (erros em casas/negociações), 'coisas que ninguém te conta' (imobiliário honesto), 'antes de assinar' (dicas práticas). Uma série cria audiência que volta."},
-  {title:"Autovalidação",phase:"Escala & Revisão",grp:3,tasks:["Reassistir aos melhores vídeos dos 30 dias","Estudar o perfil: formatos top, o que gostas de gravar, o que é rápido, o que traz seguidores","Responder as 3 perguntas no separador Progresso","Postar vídeo: 'O que mudou em mim nestes 30 dias'","Rotina GRP 3x"],coach:"Este é o vídeo mais importante do desafio. Mostra a tua evolução. Não precisas de ter números grandes — precisas de mostrar que és real. A autenticidade converte."},
-  {title:"Conteúdo que dá dinheiro",phase:"Escala & Revisão",grp:3,tasks:["Garimpar conteúdos que podem servir de publi para marcas","Roteirizar e gravar um conteúdo envolvendo uma marca (mesmo sem publi pago)","Rotina GRP 3x"],coach:"Cria um vídeo e diz no final: 'podia ser uma publicidade para a tua marca'. Para imobiliário: apps de pesquisa de casas, empresas de mudanças, seguros, home staging. O conteúdo mostra à marca como ficaria."},
-  {title:"Abordagem de marcas",phase:"Escala & Revisão",grp:3,tasks:["Criar Media Kit ou Insight Card (seguidores, alcance médio, nicho, métricas)","Criar textos de abordagem para marcas (versão séria + versão direta)","Rotina GRP 3x"],coach:"Começa por marcas locais em Lisboa. Uma agência de interiores, uma construtora, uma empresa de home staging. Permuta antes de dinheiro. Prática antes de negócio."},
-  {title:"Revisão de tudo",phase:"Escala & Revisão",grp:3,tasks:["Reler todos os materiais do desafio","Voltar às tarefas não feitas e fazê-las","Reassistir conteúdos onde ainda tens dúvidas","Celebrar os 30 dias feitos"],coach:"30 dias. Criador não é quem sabe — é quem faz. Tu fizeste. O próximo nível é consistência: as mesmas ações, melhoradas, repetidas para sempre. Let's go."}
+  {title:"Organizar a casinha",phase:"Fundação",phaseN:1,grp:0,time:"60 min",tasks:["Responder o Mapa da Clareza (PDF nos recursos)","Responder o DNA de Influenciador em viral-dna-quiz.lovable.app","Ajustar a bio do @joaoteixeira_re com a tua frase base","Parar de seguir pessoas que não fazem sentido + resetar preferências do IG","Escolher os teus 6 temas mãe (ver sugestões nos Recursos)","Postar 1 vídeo sobre um dos 6 temas — não precisa ser perfeito"],
+  coach:"O teu primeiro vídeo vai sair mau. É esse o objetivo. O Lipe diz que o dele era péssimo — e ele tem mais de 1 milhão de seguidores. O objetivo de hoje não é perfeição. É vencer a barreira do fazer. Posta o vídeo hoje.",
+  material:[
+    {icon:"🗺",name:"Mapa da Clareza — as 4 perguntas",content:`<h4>1. Quais temas dominas e amas falar?</h4><p>Lista 5 assuntos que gostas e tens propriedade para falar. Para ti: imobiliário, vendas, empreendedorismo, Lisboa, arte/detalhe, crescimento pessoal.</p><h4>2. Quais se conectam mais com o teu público?</h4><p>Dos 5, quais é que as pessoas que te seguem em @littlediamond e que podes atrair no @joaoteixeira_re querem consumir?</p><h4>3. Existe algum tema que evitas? Porquê?</h4><p>Não há resposta certa. É para te conheceres melhor como criador.</p><h4>4. O que te torna único?</h4><p>3 palavras. Experiências marcantes (500 copos, Dior, Belém). Como queres ser reconhecido online: o agente que é diferente, que veio de onde ninguém esperava.</p><div class="highlight"><strong>Regra do Lipe:</strong> Sem valor = Sem seguidores. A tua frase base é o teu contrato com a audiência.</div>`},
+    {icon:"🧬",name:"DNA de Influenciador — como usar",content:`<p>Vai a <strong>viral-dna-quiz.lovable.app</strong> e responde o quiz. O resultado vai mostrar-te o teu perfil como criador de conteúdo.</p><p>Não há perfil certo ou errado. Usa o resultado para perceber o que te vem mais naturalmente — humor, educação, inspiração, entretenimento.</p><div class="tip">Para o @joaoteixeira_re: o teu perfil vai ser provavelmente entre <strong>inspiração</strong> (a tua história) e <strong>educação</strong> (dicas reais de imobiliário). Isso é o nicho mais poderoso para um agente em 2025.</div>`},
+    {icon:"📱",name:"Como resetar o Instagram",content:`<h4>Passo a passo</h4><ul><li>Abre o Instagram e vai ao teu perfil</li><li>Menu (3 linhas) → Preferências de conteúdo</li><li>Redefinir conteúdo sugerido</li><li>Avançar → Confirmar</li></ul><p>Depois disto, o IG vai começar do zero a perceber o que te interessa. É essencial para o garimpo funcionar.</p><div class="highlight">Para a nova conta @joaoteixeira_re, considera também parar de seguir pessoas com quem não tens relação profissional. O Lipe chegou ao ponto de deixar de seguir a mulher e os amigos. A conta é uma ferramenta de trabalho.</div>`},
+    {icon:"🎙",name:"Nota de voz do Lipe — Dia 1",content:`<p>O Lipe explica que criar conta nova faz sentido se a conta tiver menos de 2000 seguidores — porque o IG entrega primeiro para seguidores, e se esses não interagem (como numa conta pessoal), o vídeo não vai a lado nenhum.</p><p>Para o @joaoteixeira_re que começas do zero: vantagem enorme. O IG vai identificar-te como produtor de conteúdo mais rapidamente.</p><p><em>"O objetivo não é perfeição. É fazer a parada. O teu vídeo vai sair uma merda. O meu primeiro também."</em> — Lipe</p>`}
+  ]},
+
+  {title:"Condicionando o algoritmo",phase:"Fundação",phaseN:1,grp:0,time:"45 min",tasks:["Seguir 10–30 perfis inspiradores: agentes imobiliários PT/BR, criadores de conteúdo de vendas, lifestyle Lisboa","Condicionar o algoritmo: 'não tenho interesse' e bloquear tudo que não serve","Criar pastas de garimpo: imobiliário, vendas/persuasão, humor, motivação, lifestyle, notícias","Postar 1 vídeo sobre um dos teus temas"],
+  coach:"O assunto mãe não se escolhe hoje — descobre-se pela interação. O Lipe descobriu que o 'relacionamento' era o seu assunto mãe porque a galera interagia mais. Para ti, pode ser 'o detalhe', 'vendas', ou 'imobiliário honesto'. Experimenta e observa o que ressoa.",
+  material:[
+    {icon:"🎙",name:"Sobre o assunto mãe — Lipe explica",content:`<p>Não é de cara que encontras o teu assunto mãe. Vais falar sobre fitness, alimentação, negócios, notícias — e vais identificando pela interação do público qual ressoa mais.</p><p>O assunto mãe do Lipe é <strong>relacionamento</strong>. Quando quer falar de contabilidade (difícil de viralizar), mistura com relacionamento: "meu amigo só namoraria com uma empresária... royalties, lucro presumido..."</p><div class="tip">Para @joaoteixeira_re: o teu candidato a assunto mãe é <strong>"o processo"</strong> — mostrar como as coisas funcionam por dentro, o que ninguém vê. Funciona tanto para imobiliário como para o percurso de vendedor/artista.</div>`},
+    {icon:"📁",name:"Sistema de pastas — como organizar",content:`<h4>Pastas sugeridas para o teu caso</h4><ul><li><strong>Imobiliário PT</strong> — agentes a fazer bom conteúdo</li><li><strong>Imobiliário BR</strong> — os brasileiros fazem muito bem, adaptas para Portugal</li><li><strong>Vendas/Persuasão</strong> — técnicas, bastidores, mindset</li><li><strong>Storytelling</strong> — histórias que te inspiram</li><li><strong>Humor/Atuação</strong> — referências de formato</li><li><strong>Ganchos virais</strong> — vídeos que param o scroll</li></ul><div class="highlight">Os criadores de conteúdo nas tuas pastas são os teus <em>funcionários não pagos</em>. Eles já validaram o que funciona. A tua função é aprender com eles e trazer para a tua voz.</div>`},
+    {icon:"⚙️",name:"Como condicionar o algoritmo",content:`<p>Toda a vez que entras no IG e aparece um vídeo que não te interessa: 3 pontos → "Não tenho interesse". Se aparecer de novo: bloqueia a conta.</p><p>Para acelerar: vai à aba Explorar, pesquisa "agente imobiliário", vai a Reels, interage com os que gostas (duplo clique, partilha, guarda). Quando voltares ao Explorar, vai aparecer mais conteúdo parecido.</p><div class="tip">Faz isto <strong>todos os dias</strong>, o tempo todo. Cada interação é um sinal que dás ao algoritmo sobre quem és como criador.</div>`}
+  ]},
+
+  {title:"Entendendo formatos de vídeo",phase:"Fundação",phaseN:1,grp:0,time:"75 min",tasks:["Estudar os 11 formatos (ver separador Recursos → Formatos)","Selecionar 5 formatos que gostas e consegues fazer","Garimpar 2 vídeos de cada formato escolhido e salvar em pastas","Gravar 3 minutos formato chamada de vídeo (papo de amigo, natural)","Dividir os 3 min em 3 vídeos de 1 min — postar o melhor"],
+  coach:"Chamada de vídeo é o teu formato mais natural como agente: direto, sem filtros, como se falasses com um cliente. Não existe formato perfeito — existe o que funciona para a tua audiência. Hoje começas a descobrir.",
+  material:[
+    {icon:"📹",name:"Os 11 formatos — resumo",content:`<h4>1. Chamada de vídeo</h4><p>Papo de amigo. Natural, direto, como se estivesses numa chamada. Cria conexão e passa verdade.</p><h4>2. Super editado</h4><p>Vários cortes, sons, efeitos. Prende atenção rápido. Para quem gosta de editar.</p><h4>3. Atuação</h4><p>Interpretas uma cena ou um personagem. Humor, reflexão, storytelling. Exagera um pouco.</p><h4>4. Entrevista</h4><p>Papo com alguém — amigo, especialista, desconhecido. Traz dinamismo e outros pontos de vista.</p><h4>5. Quadro ao fundo</h4><p>Algo escrito atrás de ti (quadro, papel, ecrã). Âncora visual que reforça o tema.</p><h4>6. React</h4><p>Reages a um vídeo que já existe. Fácil de fazer, gera opinião e debate.</p><h4>7. Storytelling</h4><p>Contas uma história — tua ou de outra pessoa. Conexão imediata.</p><h4>8. Tutorial / Dicas rápidas</h4><p>Ensinas algo de forma simples. "3 passos para X." Gera saves e shares.</p><h4>10. Antes e depois</h4><p>Transformação ou comparativo. Antes/depois, A vs B. Passa prova social.</p><h4>11. Narrando com imagens</h4><p>Voz a contar algo + imagens por cima. Para quem ainda tem vergonha da câmara.</p><div class="highlight"><strong>Regra do Lipe:</strong> Não existe formato perfeito. Testa todos e valida com a tua audiência. Nunca fiques preso a um só formato.</div>`},
+    {icon:"🎙",name:"O vídeo de 3 minutos — como fazer",content:`<p>Escolhe um tema que dominas (ex: "o que ninguém te conta antes de comprar casa em Lisboa"). Liga a câmara e fala durante 3 minutos como se estivesses a explicar a um amigo.</p><p>Não prepares roteiro. Não edites enquanto falas. O objetivo é soltar a voz.</p><p>Depois: corta em 3 vídeos de 1 minuto. Analisa qual tem o melhor gancho, melhor ritmo, melhor recompensa. Posta esse.</p><div class="tip">Este exercício mostra-te onde o teu ritmo quebra, onde começas a hesitar, onde és mais natural. É diagnóstico antes de ser conteúdo.</div>`}
+  ]},
+
+  {title:"Perdendo a vergonha",phase:"Fundação",phaseN:1,grp:0,time:"60 min",tasks:["Escrever um roteiro com estrutura Gancho → Conteúdo → Recompensa","Ir a um local público em Lisboa e gravar como se já tivesses 200k seguidores","Preparar setup básico: luz natural, câmara ao nível dos olhos, som limpo"],
+  coach:"Ninguém está a olhar. E os que estão — que se fodam. O Lipe foi julgado nas ruas de Salvador. Tu vendeste copos na Torre de Belém durante 50 dias, abordaste 5000 pessoas e ouviste 'não' mais de 4500 vezes. Gravar um Reel em público é a coisa mais fácil que já fizeste.",
+  material:[
+    {icon:"📝",name:"Como escrever um roteiro — PDF",content:`<h4>Estrutura simples</h4><p><strong>Gancho (0–5 seg):</strong> A frase que faz a pessoa parar de fazer scroll. Não entrega tudo — abre um loop de curiosidade.</p><p><strong>Conteúdo (70–80%):</strong> Entrega valor. Pode ser educativo, inspirador ou divertido. Mantém ritmo — algo novo a cada 2-3 segundos.</p><p><strong>Recompensa:</strong> Fecha o ciclo. Entrega o que prometeste no gancho. Sem enrolar. Termina logo depois do ponto alto.</p><div class="example">"Exemplo do Lipe: Gancho — 'Se me venceres numa corrida de 100 metros, dou-te um ténis novo.' Conteúdo — mostra 3-4 corridas. Recompensa — perde a última corrida e compra o ténis."</div><div class="highlight">Antes de postar qualquer vídeo: "Este vídeo segue esta estrutura?" Se não: não postas.</div>`},
+    {icon:"🎙",name:"Nota de voz do Lipe — sobre vergonha",content:`<p><em>"Ninguém tá pagando as tuas contas. Se as pessoas olharem pra você e acharem que você tem 200 mil seguidores, pensa: todo mundo ia falar 'que massa, aquele cara criando conteúdo'. Então esse exercício de ir no público, ir lá na frente e gravar — cê começa indo cedinho, quando não tem tanta gente, depois quando cê vê: 'ah, quer saber?' Vai da tua força de vontade."</em></p><div class="tip">Dica prática: vira de frente para o sol. Fala alto. Se alguém criticar, vai ficar 2-3 segundos na mente dela e vai embora. As pessoas que te julgam hoje são as mesmas que vão dizer "eu conhecia-o antes" quando tiveres 100k.</div>`}
+  ]},
+
+  {title:"Definindo a rotina",phase:"Fundação",phaseN:1,grp:3,time:"90 min",tasks:["Preencher planilha de planeamento semanal (define horários fixos)","Separar horário diário para garimpo — é mais importante que gravar","Estudar os ganchos virais e aplicar num vídeo de hoje","Postar 1 vídeo com gancho testado","Iniciar Rotina GRP 3x"],
+  coach:"Garimpo é mais importante que produção. Os maiores criadores passam mais tempo a estudar vídeos do que a gravar. A ordem de importância das métricas de garimpo: shares > comentários > likes. É assim que identifies o que funciona.",
+  material:[
+    {icon:"📅",name:"Como planear a semana",content:`<h4>Estrutura sugerida para ti</h4><p><strong>Manhã (antes das visitas):</strong> 30 min de garimpo → 15 min de roteirização → nota para gravar depois</p><p><strong>Entre visitas:</strong> Gravar conteúdo espontâneo (reação a algo que aconteceu, dica rápida)</p><p><strong>Final do dia:</strong> Gravar ciclos GRP gravados → postar → responder comentários e directs</p><div class="highlight">Não esperes ter tempo livre. O Lipe gravava no carro, em casa, na rua. O conteúdo vive na tua rotina, não ao lado dela.</div>`},
+    {icon:"🎣",name:"Ganchos virais — como usar",content:`<h4>Os 7 tipos de gancho</h4><p><strong>1. Curiosidade:</strong> "Eu não acredito nisso...", "Você sabia que...?"</p><p><strong>2. Dor ou Erro:</strong> "Os 3 erros que cometes quando...", "Para de fazer isso se quiseres..."</p><p><strong>3. Transformação:</strong> "Antes fazia assim... agora faço assim."</p><p><strong>4. Autoridade:</strong> "Depois de 50 dias a vender nas ruas, aprendi isto."</p><p><strong>5. História:</strong> "Tudo começou quando...", "Esta é a história de como quase desisti."</p><p><strong>6. Polémico:</strong> "Isto vai ser polémico, mas...", "A maioria das pessoas não vai concordar."</p><p><strong>7. Desafio ou Prova:</strong> "Tenta assistir até ao final sem te surpreenderes."</p><div class="tip">Para o teu caso: o Gancho de Autoridade é o mais poderoso. Tens uma história que nenhum outro agente em Portugal tem. Usa-a.</div>`}
+  ]},
+
+  {title:"Testes",phase:"Fundação",phaseN:1,grp:3,time:"60 min",tasks:["Usar ganchos novos nos vídeos de hoje","Testar o mesmo vídeo com 2 inícios diferentes (arquiva o que perder)","Rotina GRP 3x"],
+  coach:"Hoje aplicas os ganchos. Escolhe 1 gancho de curiosidade e 1 gancho de história. Testa os dois no mesmo tema. Compara resultados em 24 horas. O que perder: arquiva. Não apaga — é dado.",
+  material:[
+    {icon:"🧪",name:"Os 6 testes de vídeo",content:`<h4>1. Teste do corte no ápice</h4><p>Faz versão normal + versão que corta no momento mais intenso. Às vezes o final atrapalha.</p><h4>2. Resultado no início vs final</h4><p>Mostra o resultado logo no início vs só no final. A tua audiência prefere saber já ou ser surpreendida?</p><h4>3. Teste de ganchos</h4><p>Mesmo vídeo, inícios diferentes. Visual, sonoro, curiosidade, indignação, pergunta, emocional.</p><h4>4. Teste de interação</h4><p>Sozinho vs com outra pessoa. O formato fica mais leve com alguém?</p><h4>5. Teste da música</h4><p>Emocional, energética, sem música. A música certa pode multiplicar o impacto.</p><h4>6. Teste do look</h4><p>Fato vs casual. Cada público tem identificação diferente. Para imobiliário: experimenta ambos.</p><div class="highlight">Fazer testes foi o que o Lipe usou para aprender o que funciona para a SUA audiência. Não existe atalho — é testando.</div>`}
+  ]},
+
+  {title:"Entendendo as métricas",phase:"Métricas & Testes",phaseN:2,grp:3,time:"45 min",tasks:["Analisar métricas de todos os vídeos postados esta semana","Preencher o separador Métricas deste tracker","Identificar padrões: qual formato teve melhor retenção? Qual ganhou mais seguidores?","Rotina GRP 3x"],
+  coach:"Semana 1 concluída. Vai ao separador Métricas e regista os dados. Olha para retenção, shares e seguidores por vídeo. O padrão começa a aparecer agora. Não há mau resultado — há dados.",
+  material:[
+    {icon:"📊",name:"As 8 métricas que importam",content:`<h4>1. Alcance</h4><p>Contas únicas que viram o vídeo. Se cair continuamente, revê os primeiros 3 segundos.</p><h4>2. Retenção</h4><p>0-3s: objetivo 50-70%. 3-10s: 20-40%. 10s até ao final: acima de 10%.</p><h4>3. Taxa de conclusão</h4><p>Acima de 50% = vídeo com potencial de viralizar. Se maioria sai antes de 10s: gancho a refazer.</p><h4>4. Saves</h4><p>Métrica de valor. Taxa = (saves ÷ visualizações) × 100. Conteúdo educativo tem saves altos.</p><h4>5. Engajamento total</h4><p>(Likes + Comentários + Shares + Saves) ÷ Alcance × 100. Meta: acima de 5%.</p><h4>6. Tempo total assistido</h4><p>Volume bruto de atenção. Compara vídeos curtos vs longos.</p><h4>7. Seguidores por vídeo</h4><p>Revela se o conteúdo cria identificação. Autenticidade + posicionamento + valor emocional = seguidores.</p><h4>8. Fontes de alcance</h4><p>Objetivo: Explorar e Reels. Se só vêm seguidores, o conteúdo retém mas não atrai público novo.</p>`}
+  ]},
+
+  {title:"Rotina de criador",phase:"Métricas & Testes",phaseN:2,grp:3,time:"45 min",tasks:["Criar a tua mensagem padrão para não-seguidores (ver Recursos → Mensagem padrão)","Definir rotina diária: responder comentários, directs, interagir com 5+ contas do nicho","Rotina GRP 3x"],
+  coach:"A mensagem padrão é o teu sistema de conversão manual. Toda a pessoa que interage com o teu conteúdo mas não te segue é uma oportunidade. Um DM simples, direto, sem parecer spam. Cria hoje e usa todos os dias.",
+  material:[
+    {icon:"💬",name:"Mensagem padrão — como criar",content:`<h4>Estrutura simples</h4><p>1. Referencia o que a pessoa fez (curtiu, comentou, viu o story)<br>2. Diz o que fazes em 1 frase<br>3. Convida a seguir se fizer sentido</p><div class="example">"Olá! Vi que interagiste com um dos meus vídeos. Posto sobre imobiliário em Lisboa — o lado que os outros agentes não mostram. Se fizer sentido, dá uma vista de olhos no perfil!"</div><div class="tip">Não peças — convida. Nunca uses "por favor" ou "seria ótimo". Neutro e confiante.</div>`}
+  ]},
+
+  {title:"Garimpo externo",phase:"Métricas & Testes",phaseN:2,grp:3,time:"60 min",tasks:["Garimpar fora do Instagram: YouTube, TikTok, LinkedIn, filmes, conversas, livros","Pelo menos 1 vídeo de fonte externa nos ciclos GRP de hoje","Rotina GRP 3x"],
+  coach:"Para imobiliário PT: garimpa conteúdo de agentes no Brasil (fazem muito bem), canais de finanças pessoais (audiência que pensa em comprar casa), lifestyle de Lisboa. Tudo isto é potencial adaptado para a tua voz.",
+  material:[
+    {icon:"🔍",name:"Onde garimpar fora do IG",content:`<h4>Fontes sugeridas para imobiliário</h4><ul><li><strong>YouTube BR:</strong> agentes imobiliários brasileiros têm conteúdo educativo excelente — adaptas para PT</li><li><strong>TikTok:</strong> pesquisa "real estate agent" em inglês — formatos muito criativos</li><li><strong>LinkedIn PT:</strong> profissionais de imobiliário partilham estudos de mercado</li><li><strong>Jornal Público / Expresso:</strong> notícias sobre mercado imobiliário = react instantâneo</li><li><strong>Conversas com clientes:</strong> as dúvidas reais que te fazem são os melhores ganchos</li></ul><div class="highlight">O Lipe diz: "Criadores de conteúdo que são teus funcionários não pagos." Fora do IG encontras conteúdo que 99% dos criadores portugueses ainda não garimparam.</div>`}
+  ]},
+
+  {title:"Testes avançados",phase:"Métricas & Testes",phaseN:2,grp:3,time:"60 min",tasks:["Aplicar pelo menos 1 teste: corte no ápice, resultado no início vs final, teste de ganchos, interação, música ou look","Rotina GRP 3x"],
+  coach:"Pega num vídeo que não performou bem. Refaz com gancho diferente. O Lipe diz: às vezes só de mudar o começo o vídeo vira outro. O conteúdo pode ser bom — o problema pode ser apenas os primeiros 3 segundos.",
+  material:[
+    {icon:"🧪",name:"Como aplicar os testes",content:`<p>Escolhe 1 vídeo da semana que não performou como esperavas. Identifica o problema mais provável:</p><ul><li>Poucos views → gancho fraco. Testa gancho diferente.</li><li>Views mas sem engajamento → conteúdo sem emoção. Muda o tom ou o formato.</li><li>Engajamento mas sem seguidores → entretém mas não posiciona. Adiciona quem és.</li></ul><div class="tip">Não apagues vídeos que não funcionaram. Arquiva. São dados. E às vezes um vídeo que flopos ressurge semanas depois.</div>`}
+  ]},
+
+  {title:"Formato: Entrevista",phase:"Formatos Avançados",phaseN:3,grp:3,time:"90 min",tasks:["Gravar vídeo entrevistando alguém: cliente, colega de equipa, proprietário, desconhecido","Usar o método GRP: garimpa perguntas que funcionaram, adapta para o teu contexto","Planear semana de produção de conteúdo","Rotina GRP 3x"],
+  coach:"Para imobiliário, a entrevista mais poderosa é com um cliente que comprou recentemente. 'O que é que ninguém te disse antes de comprar?' — essa resposta é o melhor conteúdo que podes fazer. Agenda hoje.",
+  material:[
+    {icon:"🎤",name:"Como fazer entrevistas — 3 formatos",content:`<h4>1. Desconhecido sem roteiro</h4><p>Abordas alguém na rua ou numa visita e perguntas algo relacionado com o teu tema. Espontâneo, imprevisível, autêntico.</p><h4>2. Desconhecido com roteiro</h4><p>Preparas 3-5 perguntas em advance. Mais controlo, ainda com energia de imprevisibilidade.</p><h4>3. Amigo/cliente</h4><p>Ambiente mais relaxado, mais fácil de conduzir. Bom para temas técnicos onde precisas de respostas elaboradas.</p><div class="highlight">Para @joaoteixeira_re: "Fizeste uma visita a uma casa. O que correu diferente do que esperavas?" — essa pergunta a um cliente real é ouro.</div>`}
+  ]},
+
+  {title:"Conteúdo de valor",phase:"Formatos Avançados",phaseN:3,grp:3,time:"75 min",tasks:["Gravar vídeo com posicionamento claro ou dica prática que resolve uma dor real","Analisar todos os vídeos feitos até hoje: qual performou melhor e porquê?","Comparar o 1º vídeo com o mais recente — nota a diferença","Rotina GRP 3x"],
+  coach:"Conteúdo de valor resolve uma dor. Para imobiliário: '3 erros que as pessoas cometem quando compram casa em Lisboa', 'o que ninguém te diz sobre comissões', 'como negociei o preço abaixo do pedido'. O objetivo não é viralizar — é posicionar. Mas o Lipe ganhou 26 mil seguidores com o vídeo 'Bolha' (storytelling + valor).",
+  material:[
+    {icon:"💡",name:"O que é conteúdo de valor",content:`<p>Conteúdo que resolve a dor de alguém. Não tem de ser falado — mas falado passa mais personalidade.</p><p>Pode ser: posicionamento ("Balenciaga não é luxo. Luxo é ter tempo"), dicas em lista, chamada para legenda com os X pontos, ou conteúdo de nicho extremo (religião, política, área específica).</p><div class="example">Exemplo do Lipe: "Bolha" — vídeo de storytelling no carro. 4,4 milhões de visualizações. 28 mil novos seguidores. Feito em 10 minutos.</div><div class="tip">Mistura gatilhos emocionais + música de fundo + posicionamento. Se usares música, tens mais uma dimensão para criar emoção — nostalgia, urgência, alegria.</div>`},
+    {icon:"🎙",name:"Notas de voz do Lipe — dias 12",content:`<p><em>"Um conteúdo de valor que me dá resultado é o que me dá 2000 seguidores. Um vídeo que fiz em 15 minutos deu-me 2000 seguidores em 24 horas. Se fizer dois desses por dia, são 60 mil por mês."</em></p><p>O conteúdo de valor posiciona-te como autoridade no teu nicho. Para imobiliário: a pessoa que te segue porque aprendeu algo útil é muito mais valiosa do que a pessoa que te segue por um vídeo engraçado.</p>`}
+  ]},
+
+  {title:"Atuação",phase:"Formatos Avançados",phaseN:3,grp:3,time:"60 min",tasks:["Gravar vídeo atuando — personagem, POV, cena, sketch (extra na produção de hoje)","Rotina GRP 3x"],
+  coach:"Não precisas de figurino. Interpretas: o cliente que não quer ouvir o agente, o proprietário que pede o dobro do valor de mercado, o banco que diz não. O Lipe diz que a atuação abre leque para marcas. É muito mais divertido de fazer do que parece.",
+  material:[
+    {icon:"🎭",name:"Como fazer vídeos de atuação",content:`<h4>Sem figurino</h4><p>O Lipe nunca usou figurino. Apenas interpreta e usa a voz diferente. "Aquela mãe que faz isso e aquilo" — sem roupas especiais.</p><h4>Com figurino mínimo</h4><p>Um jaleco = médico. Uma peruca = personagem feminina. Um gravata = executivo pomposo. O contexto cria o personagem.</p><div class="highlight">Para @joaoteixeira_re: "O cliente que acha que sabe mais que o agente" — personagem reconhecível por qualquer pessoa que já comprou casa. Humor + verdade = viral.</div><div class="tip">A atuação é a porta de entrada para marcas. Quando uma marca vê que consegues interpretar cenários, consegues inserir os produtos deles naturalmente num vídeo.</div>`}
+  ]},
+
+  {title:"Interagindo com outra pessoa",phase:"Formatos Avançados",phaseN:3,grp:3,time:"60 min",tasks:["Gravar vídeo com outra pessoa: cliente, colega RE/MAX, Maria João, amigo","Rotina GRP 3x"],
+  coach:"A outra pessoa não precisa de aparecer. Podes filmar uma conversa com um cliente durante uma visita, mostrar uma propriedade com alguém. A câmara segura melhor quando há interação real.",
+  material:[
+    {icon:"👥",name:"Formatos com outra pessoa",content:`<h4>3 maneiras</h4><p><strong>Aparece na câmara:</strong> conversa, entrevista, reação conjunta.</p><p><strong>Voz sem aparecer:</strong> a pessoa faz perguntas offscreen, tu respondes.</p><p><strong>Interação indireta:</strong> mostras o que a pessoa fez/disse sem ela aparecer — "um cliente disse-me algo que nunca esqueci..."</p><div class="tip">Para imobiliário: a visita gravada com um cliente real (com permissão) é autenticidade máxima. As pessoas identificam-se imediatamente com as dúvidas e reações do cliente.</div>`}
+  ]},
+
+  {title:"Reagindo",phase:"Formatos Avançados",phaseN:3,grp:3,time:"45 min",tasks:["Garimpar um vídeo viral relacionado com o mercado imobiliário, vendas ou tendências","Gravar react ao vídeo garimpado","Rotina GRP 3x"],
+  coach:"Para imobiliário: reage a notícias sobre preços de casas em Lisboa, a erros de outros agentes, a vídeos virais sobre finanças pessoais que podes ligar ao mercado imobiliário. O react é o formato mais rápido do desafio.",
+  material:[
+    {icon:"▶️",name:"3 tipos de react",content:`<h4>1. Passivo — só a tua cara</h4><p>O vídeo corre com áudio original, tu mostras a tua expressão. Ganhas pelas visualizações do vídeo viral.</p><h4>2. Com pausas e comentários</h4><p>Pausas o vídeo em momentos-chave, dás o teu comentário, volta o vídeo. Mais envolvente.</p><h4>3. Simultâneo</h4><p>Ecrã dividido — o vídeo corre enquanto falas em simultâneo.</p><div class="highlight">O Lipe diz: "Usa assuntos polémicos que já estão virais para fazer react e depois puxar para o teu tema." Para ti: uma notícia sobre o mercado imobiliário → react de 30 segundos → a tua perspectiva como agente.</div>`}
+  ]},
+
+  {title:"Tutorial",phase:"Formatos Avançados",phaseN:3,grp:3,time:"45 min",tasks:["Gravar vídeo tutorial — ensinar algo concreto e prático","Rotina GRP 3x"],
+  coach:"'Como avaliar se um apartamento tem problemas antes de comprar', '3 perguntas que deves fazer ao banco antes de pedir crédito', 'como funciona uma oferta num imóvel em Portugal'. Não precisas de ser especialista — partilhas o que sabes.",
+  material:[
+    {icon:"🎓",name:"3 formatos de tutorial",content:`<h4>1. Mostrando como fazer</h4><p>Câmara aponta para o que estás a fazer — documentas o processo em tempo real.</p><h4>2. Falado — explicas os passos</h4><p>Olhas para a câmara e explicas o processo. "Primeiro fazes X. Depois Y. O erro mais comum é Z."</p><h4>3. Chamada para legenda</h4><p>Enuncias os pontos e mandas para a legenda para o detalhe. Gera saves e mantém o vídeo curto.</p><div class="tip">Para imobiliário: tutoriais geram saves. "Guarda este vídeo antes de comprar casa" é um CTA natural que aumenta a taxa de salvamento.</div>`}
+  ]},
+
+  {title:"Antes e depois",phase:"Formatos Avançados",phaseN:3,grp:3,time:"45 min",tasks:["Gravar vídeo antes e depois / comparativo","Rotina GRP 3x"],
+  coach:"Antes e depois = tudo o que é comparativo. 'Lisboa antes do boom imobiliário vs agora', 'eu antes de entrar no imobiliário vs hoje', 'agentes que vendem bem vs agentes que não vendem'. O gancho é o contraste.",
+  material:[
+    {icon:"↔️",name:"Antes e depois — é mais amplo do que parece",content:`<p>Antes e depois não é só transformação física. É tudo comparativo:</p><ul><li>Antes/depois no tempo: "Lisboa há 10 anos vs hoje"</li><li>A vs B: "agentes com 0 vendas vs top de vendas — o que é diferente"</li><li>Com/sem: "comprar sem agente vs com agente"</li><li>Então/agora: "eu quando comecei no imobiliário vs agora"</li></ul><div class="highlight">O Lipe diz: "Antes e depois é um norte. Pensa em comparativo. Podes misturar com outros formatos — um react de antes e depois, uma atuação de antes e depois."</div>`}
+  ]},
+
+  {title:"Quadro ao fundo",phase:"Formatos Avançados",phaseN:3,grp:3,time:"45 min",tasks:["Gravar vídeo com quadro, papel ou ecrã ao fundo explicando um assunto","Rotina GRP 3x"],
+  coach:"Simples demais. Um papel A4 com o título do vídeo escrito → câmara aponta para ti + papel ao fundo → explicas. 'Os 3 bairros de Lisboa para comprar em 2025' — escreves os 3 no papel e explicas cada um. 10 minutos de preparação.",
+  material:[
+    {icon:"📋",name:"Quadro ao fundo — como usar",content:`<p>O quadro funciona como âncora visual. A pessoa que faz scroll vê algo escrito → para para ler → isso é retenção.</p><p>Não precisas de quadro real. Papel na parede, post-its, notebook aberto com slide, telemóvel a mostrar um mapa de Lisboa.</p><div class="tip">Para imobiliário: "Os 5 erros ao comprar casa" escritos num papel → explicas cada um. Visual simples, conteúdo valioso, fácil de fazer em qualquer sítio.</div>`}
+  ]},
+
+  {title:"Análise e melhoria",phase:"Formatos Avançados",phaseN:3,grp:3,time:"75 min",tasks:["Listar todos os formatos testados: qual performou melhor, qual gostas mais de fazer, qual é mais rápido","Regravar em formato diferente os 2-3 vídeos que não funcionaram","Revisar pastas de garimpo — estão a trazer o conteúdo certo?","Rotina GRP 3x"],
+  coach:"Hoje é diagnóstico. O Lipe faz esta análise toda segunda-feira. A pergunta-chave: qual formato te dá prazer de fazer E bons resultados? Esse é o teu formato principal. Os outros são complementares.",
+  material:[
+    {icon:"🔍",name:"Como analisar e regravar",content:`<h4>O que analisar em cada vídeo</h4><ul><li>O gancho foi bom, médio ou mau?</li><li>Qual formato usei?</li><li>Que emoção tentei passar?</li><li>Resultado: views, retenção, seguidores</li><li>O que mudaria?</li></ul><h4>Como regravar</h4><p>Pega no tema que não funcionou. Muda o formato. Se foi falado → testa escrito ou atuado. Se foi atuado → testa falado. O conteúdo pode ser bom — o problema pode ser só o formato.</p><div class="highlight">O Lipe: "Às vezes o que não encaixou foi o formato. Se fizeres um vídeo falado com tom errado, em escrito resolves. Escrito + imagem de fundo salva muita coisa."</div>`}
+  ]},
+
+  {title:"Interação",phase:"Comunidade & Marcas",phaseN:4,grp:3,time:"60 min",tasks:["Interagir com 20+ perfis do nicho: comentar com substância, não só 'great post!'","Responder todos os directs e comentários dos teus vídeos","Abrir caixinha de perguntas nos stories","Rotina GRP 3x"],
+  coach:"Crescer sozinho é possível — o Lipe cresceu sozinho. Mas depois de ter audiência percebeu que a comunidade acelera tudo. Comenta com uma pergunta genuína. Isso cria relação. E relação cria oportunidades.",
+  material:[
+    {icon:"🤝",name:"Como interagir corretamente",content:`<p>Interagir não é clicar 'curtir'. É deixar um comentário que a pessoa queira responder.</p><ul><li>Faz uma pergunta sobre o processo deles</li><li>Partilha uma perspectiva diferente</li><li>Elogia algo específico, não genérico</li></ul><div class="example">"Vi que usaste o formato entrevista na rua — qual foi a maior dificuldade de abordar desconhecidos? Estou a começar a fazer o mesmo."</div><div class="tip">Para a caixinha de perguntas nos stories: "O que querias mesmo saber antes de comprar a tua primeira casa?" — essa resposta é o teu próximo mês de conteúdo.</div>`}
+  ]},
+
+  {title:"Ajuste de rota",phase:"Comunidade & Marcas",phaseN:4,grp:5,time:"90 min",tasks:["Rever rotina de criação: o que está a funcionar, o que não está","Rever assunto mãe: precisa de mudar? Está a funcionar?","Identificar os 3 melhores vídeos e perceber o padrão","Escalar o tipo de conteúdo que melhor funcionou","Rotina GRP 5x"],
+  coach:"Semana 3 completa. Este é o checkpoint mais importante do desafio. A pergunta que o Lipe faz: 'O que faria diferente nos últimos 21 dias?' Essa resposta define os próximos 9. Sem julgamento — só dados e ajuste.",
+  material:[
+    {icon:"🔄",name:"Como fazer o ajuste de rota",content:`<h4>3 perguntas a responder hoje</h4><p>1. <strong>Rotina:</strong> O que estou a conseguir fazer todos os dias? O que estou a saltar? Porquê?</p><p>2. <strong>Assunto mãe:</strong> Qual tema gerou mais interação? Qual me deu mais prazer de criar? São compatíveis?</p><p>3. <strong>Formato:</strong> Qual formato performou melhor? Consigo escalá-lo?</p><div class="highlight">O Lipe fez ajuste de rota com um mentorado que "não estava a fazer nada do que eu disse". Depois de voltar ao método base, a coisa virou. Hoje é esse dia para ti.</div>`}
+  ]},
+
+  {title:"Regravação e vídeo longo",phase:"Comunidade & Marcas",phaseN:4,grp:5,time:"75 min",tasks:["Regravar 2-3 vídeos que floparam em formato diferente","Gravar e postar 1 vídeo longo (+1min30s)","Rotina GRP 5x"],
+  coach:"Vídeo longo para imobiliário: tour a um apartamento com narração real, processo de negociação de um imóvel (anonimizado), dia na vida de um agente em Lisboa. O Lipe diz que vídeo longo dá seguidores de qualidade — pessoas que ficam são pessoas que compram.",
+  material:[
+    {icon:"📹",name:"Como fazer vídeo longo",content:`<p>Vídeo longo = mínimo 1 minuto e 30 segundos. Não é simplesmente falar mais tempo — é ter estrutura que justifique a duração.</p><ul><li>Tour de apartamento com comentário real: o que está bem, o que está mal, o que a foto não mostra</li><li>Story de uma negociação: do primeiro contacto ao contrato (sem dados do cliente)</li><li>Dia real: mostra o teu dia como agente sem filtros</li></ul><div class="tip">O vídeo longo bem feito posiciona-te como autoridade. Quem vê até ao final quer saber mais sobre ti — e esses são os teus futuros clientes.</div>`}
+  ]},
+
+  {title:"Modelar a televisão",phase:"Comunidade & Marcas",phaseN:4,grp:5,time:"90 min",tasks:["1 vídeo sobre alimentação/lifestyle (associa ao teu dia a dia)","1 vídeo sobre notícias (mercado imobiliário, taxas, novidades)","1 vídeo sobre cultura/desporto","1 vídeo sobre relacionamento","1 vídeo polémico (ex: 'os agentes imobiliários cobram demasiado?')"],
+  coach:"Este é o dia mais intenso do desafio: 5 vídeos diferentes num dia. O Lipe usa este método para permeares vários assuntos e gerares identificação por múltiplos ângulos. O teu assunto mãe liga tudo.",
+  material:[
+    {icon:"📺",name:"Modelar a televisão — o conceito",content:`<p>A televisão brasileira tem grade de conteúdo: notícias, entretenimento, desporto, culinária, drama. Cada um atinge um segmento diferente da audiência.</p><p>Ao fazer os 5 tipos num dia, descobres qual assunto adicional ressoa com a tua audiência para além do teu nicho principal.</p><div class="highlight">Para @joaoteixeira_re: o vídeo polémico do dia pode ser "a maioria dos agentes imobiliários em Portugal não sabe vender casas" — tens credibilidade para o dizer porque vieste de fora do setor e viste como funciona.</div>`}
+  ]},
+
+  {title:"Análise e criação",phase:"Comunidade & Marcas",phaseN:4,grp:3,time:"45 min",tasks:["Analisar insights: quais vídeos tiveram melhor alcance, retenção, shares","Ler comentários dos teus vídeos e extrair ideias de novos conteúdos","Ler comentários de perfis similares: quais perguntas ficam sem resposta?","Rotina GRP 3x"],
+  coach:"Os comentários são o teu briefing criativo gratuito. 'Quanto custa mesmo um agente em Portugal?' — se a tua audiência pergunta isso, é porque não há boa resposta. Dás-la tu.",
+  material:[
+    {icon:"💬",name:"Como extrair ideias dos comentários",content:`<p>Método do Lipe: pega num comentário que teve muitos likes de outros utilizadores. Isso significa que várias pessoas pensaram o mesmo mas só uma escreveu.</p><p>Esse comentário é o teu próximo vídeo.</p><ul><li>Cria um vídeo a responder diretamente ao comentário</li><li>Cita o comentário no início como gancho</li><li>Ou cria uma série baseada nas perguntas mais frequentes</li></ul><div class="tip">Faz o mesmo com comentários de perfis similares ao teu — mesmo que não sejam teus comentários. As dúvidas do público são universais no nicho.</div>`}
+  ]},
+
+  {title:"Sobre ti e marcas",phase:"Comunidade & Marcas",phaseN:4,grp:3,time:"60 min",tasks:["Gravar vídeo a contar a tua história: 500 copos, Belém, a transição para o imobiliário","Mapear 5 marcas com quem gostarias de trabalhar (começa locais)","Rotina GRP 3x"],
+  coach:"A tua história é o teu maior ativo de diferenciação. Vendeste copos para a Dior. Abordaste 5000 pessoas nas ruas de Lisboa. Esse percurso é o que te separa de qualquer outro agente. O gancho já tens: 'Gravei copos para a Dior. Agora vendo casas.'",
+  material:[
+    {icon:"📖",name:"Como contar a tua história",content:`<h4>Estrutura narrativa</h4><p><strong>Gancho:</strong> "Gravei copos para a Dior. Agora vendo casas."</p><p><strong>Contexto:</strong> O Little Diamond, as marcas, os 60 dias de espetáculos por ano.</p><p><strong>Virada:</strong> O desafio 500 copos — 5000 pessoas, 4500 "nãos", o que aprendeste sobre rejeição e persuasão.</p><p><strong>Chegada:</strong> Como isso te trouxe ao imobiliário. O que mudou na tua forma de ver vendas e relações com clientes.</p><p><strong>Posicionamento:</strong> "O detalhe mau destrói. O detalhe bom fica para sempre." — por que és diferente.</p><div class="tip">Faz em partes. Parte 1 hoje. Parte 2 na semana seguinte. Cada parte nova traz as pessoas que viram a anterior de volta ao teu perfil.</div>`},
+    {icon:"🏢",name:"5 marcas para mapear",content:`<h4>Começa local e relevante</h4><ul><li>Apps de pesquisa de imóveis (Idealista, Imovirtual)</li><li>Empresas de mudanças em Lisboa</li><li>Home staging / decoração de interiores</li><li>Seguros (habitação, vida)</li><li>Bancos / mediadores de crédito habitação</li></ul><div class="highlight">Não peças dinheiro logo. Começa com permuta: "Faço um vídeo apresentando o vosso serviço em troca de experiência/produto." Isso é o teu portfólio de publi.</div>`}
+  ]},
+
+  {title:"Vídeos autênticos",phase:"Escala & Revisão",phaseN:5,grp:3,time:"60 min",tasks:["Identificar 1-2 formatos que se repetem naturalmente no teu conteúdo","Criar uma série com nome: ex: 'O detalhe que destrói', 'Antes de assinar', 'Coisas que ninguém te conta'","Fazer carrossel com os melhores vídeos da semana ou do mês","Rotina GRP 3x"],
+  coach:"Série para @joaoteixeira_re: 'O detalhe que destrói' (erros em casas/negociações), 'Antes de assinar' (dicas práticas pré-contrato), 'Coisas que ninguém te conta' (imobiliário honesto). Uma série cria audiência que volta — vêem parte 3 e vão procurar a parte 1.",
+  material:[
+    {icon:"🎬",name:"Como criar uma série autêntica",content:`<h4>Método do Lipe</h4><p>Identifica um vídeo que performou bem. Pergunta: "Como transformo isto numa série?"</p><p>Não precisa de ser sequencial — pode ser "parte 1, parte 5, parte 9". A pessoa que vê a parte 5 vai ao teu perfil procurar as outras.</p><div class="example">Lipe: "Isso devia ser básico" — regras de etiqueta básica. Série de partes aleatórias. Cada nova parte traz de volta quem viu as anteriores.</div><div class="highlight">7 coisas que deverias saber antes de [X] → puxa para a legenda → salvas + comentários. Funciona em qualquer nicho. Para imobiliário: "7 coisas que deverias saber antes de comprar casa em Lisboa."</div>`}
+  ]},
+
+  {title:"Autovalidação",phase:"Escala & Revisão",phaseN:5,grp:3,time:"75 min",tasks:["Reassistir aos 5 melhores vídeos dos 30 dias","Estudar o teu perfil: quais formatos top, o que gostas de gravar, o que é rápido, o que traz seguidores","Responder as 3 perguntas no separador Progresso","Postar vídeo: 'O que mudou em mim nestes 30 dias'","Rotina GRP 3x"],
+  coach:"Este é o vídeo mais importante do desafio. Mostra a evolução. Não precisas de números grandes — precisas de ser real. A autenticidade converte muito mais do que a performance.",
+  material:[
+    {icon:"🔍",name:"Como fazer a análise completa",content:`<p>Para cada vídeo dos últimos 30 dias cria um registo simples:</p><ul><li>Formato usado</li><li>Gancho: bom / médio / mau</li><li>Emoção passada</li><li>Resultado (views, retenção, seguidores)</li><li>O que mudaria</li></ul><p>Depois responde:</p><ul><li>Qual formato gosto mais de fazer?</li><li>Qual gera mais seguidores?</li><li>Qual é mais rápido?</li><li>Qual consigo escalar?</li></ul><div class="tip">O cruzamento destas respostas define a tua estratégia de conteúdo para os próximos 30 dias.</div>`}
+  ]},
+
+  {title:"Conteúdo que dá dinheiro",phase:"Escala & Revisão",phaseN:5,grp:3,time:"45 min",tasks:["Garimpar conteúdos que podem servir de publi para marcas relevantes","Roteirizar e gravar um conteúdo que integra uma marca (mesmo sem publi pago — para portfólio)","No final do vídeo diz: 'Podia ser uma publicidade para a tua marca'","Rotina GRP 3x"],
+  coach:"Crias o vídeo como se fosse publi — integras a marca naturalmente no conteúdo — e no final dizes que podia ser publicidade para eles. Depois envias o vídeo à marca. É o teu pitch de vendas mais eficaz.",
+  material:[
+    {icon:"💰",name:"Como fazer conteúdo de publi",content:`<p>O segredo é: crias um formato roteirizado onde marcas possam inserir-se naturalmente.</p><div class="example">PV Freitas (referência do Lipe): abre o frigorífico e começa a falar. O iFood fechou com ele. O formato cria espaço natural para inserção da marca.</div><h4>Para imobiliário</h4><ul><li>Tour de apartamento → inserção natural de empresa de mudanças ou decoração</li><li>Processo de crédito → inserção de mediador financeiro</li><li>Dicas para compradores → inserção de app de pesquisa de imóveis</li></ul><div class="highlight">Sem CTA de venda no final. Em vez disso: entrega o conteúdo completo. Deixa a marca falar por si.</div>`}
+  ]},
+
+  {title:"Abordagem de marcas",phase:"Escala & Revisão",phaseN:5,grp:3,time:"45 min",tasks:["Criar Media Kit: seguidores, alcance médio, taxa de engajamento, nicho, exemplos de vídeos","Criar 2 textos de abordagem: versão profissional e versão direta/pessoal","Enviar para 3 marcas da tua lista","Rotina GRP 3x"],
+  coach:"Começa por marcas locais em Lisboa. Uma agência de interiores, uma empresa de home staging, um mediador de crédito. Permuta antes de dinheiro. O objetivo desta semana é treinar o contacto, não fechar negócio.",
+  material:[
+    {icon:"📋",name:"Media Kit — o que incluir",content:`<h4>Elementos essenciais</h4><ul><li>Nome, handle, nicho</li><li>Número de seguidores</li><li>Alcance médio por vídeo</li><li>Taxa de engajamento</li><li>Audiência: idade, género, localização</li><li>2-3 exemplos dos melhores vídeos</li><li>O que ofereces: formato de publi, duração, CTA</li></ul><div class="tip">Não precisas de design elaborado. Um documento Google com estes dados já é um media kit. O importante é que os números sejam reais e o nicho seja claro.</div>`},
+    {icon:"✉️",name:"Textos de abordagem — exemplos",content:`<h4>Versão profissional</h4><p>"Olá [nome], sou o João Teixeira, agente imobiliário e criador de conteúdo em Lisboa. Estou a desenvolver conteúdo sobre [nicho da marca] e acredito que existe uma parceria natural entre o meu trabalho e a [marca]. Partilho em anexo algumas métricas do meu perfil. Estaria disponível para uma conversa breve?"</p><h4>Versão direta</h4><p>"Vi o vosso trabalho e faz sentido para a minha audiência. Tenho [X] seguidores, alcance médio de [X] por vídeo. Faço um vídeo apresentando o vosso serviço — permuta ou orçamento, como preferirem."</p>`}
+  ]},
+
+  {title:"Revisão de tudo",phase:"Escala & Revisão",phaseN:5,grp:3,time:"30 min",tasks:["Reler todos os materiais do desafio — especialmente o que falhaste","Voltar às tarefas não feitas e fazê-las hoje","Reassistir conteúdos onde ainda tens dúvidas","Celebrar os 30 dias — fizeste algo que 95% das pessoas não fazem"],
+  coach:"30 dias. Criador não é quem sabe — é quem faz. Tu fizeste. O próximo nível não é um novo desafio. São as mesmas ações, melhoradas, repetidas para sempre. Let's go.",
+  material:[
+    {icon:"🏁",name:"Revisão geral — o que aprendeste",content:`<h4>Clareza</h4><p>Mapa da Clareza, DNA, frase base, 6 temas mãe, reset do IG. Direção definida.</p><h4>Algoritmo e Pastas</h4><p>Garimpo diário, pastas por tema, condicionar o algoritmo. A tua mina de ouro criativa.</p><h4>Formatos</h4><p>9 formatos testados. Sabes quais funcionam para ti. Não fiques preso a um.</p><h4>Rotina GRP</h4><p>Garimpar → Roteirizar → Postar. Todos os dias. É trabalho de formiguinha.</p><h4>Métricas</h4><p>Shares > Comentários > Likes. Engajamento > 5%. Retenção > 50%. Explorar como destino.</p><h4>Comunidade</h4><p>Interação real. Mensagem padrão. Série autêntica. Marcas.</p><div class="alert alert-green" style="margin-top:12px;"><div class="alert-title">E agora?</div>Tudo o que precisas está aqui. Se quiseres melhorar em algo, volta ao material. Se quiseres crescer de verdade, segue aplicando. Criador não é quem sabe, é quem faz.</div>`}
+  ]}
 ];
 
-const PHASES = [
+const PHASES=[
   {name:"Fundação",days:"1–6",color:"#2A5FA8",range:[0,5]},
-  {name:"Métricas & Testes",days:"7–10",color:"#1D9E75",range:[6,9]},
-  {name:"Formatos Avançados",days:"11–19",color:"#533AB7",range:[10,18]},
-  {name:"Comunidade & Marcas",days:"20–25",color:"#D85A30",range:[19,24]},
-  {name:"Escala & Revisão",days:"26–30",color:"#BA7517",range:[25,29]}
+  {name:"Métricas & Testes",days:"7–10",color:"#1A8F68",range:[6,9]},
+  {name:"Formatos Avançados",days:"11–19",color:"#6B3AB7",range:[10,18]},
+  {name:"Comunidade & Marcas",days:"20–25",color:"#C05020",range:[19,24]},
+  {name:"Escala & Revisão",days:"26–30",color:"#A86020",range:[25,29]}
 ];
 
-const FORMATS = ["Chamada de vídeo","Super editado","Atuação","Entrevista","Quadro ao fundo","React","Storytelling","Tutorial / Dicas rápidas","Antes e depois","Narrando com imagens"];
-
-const HOOKS_IMOBI = [
+const HOOKS_IMOBI=[
   "Gravei copos para a Dior. Agora vendo casas.",
   "O que ninguém te conta antes de comprar casa em Lisboa.",
-  "3 erros que podem custar-te 20 mil euros na compra de um imóvel.",
+  "3 erros que podem custar-te 20 mil euros num imóvel.",
   "Abordei 5000 pessoas nas ruas. Aprendi isto sobre rejeição.",
   "O agente imobiliário honesto que Lisboa precisava.",
   "Isto devia ser ilegal de saber sobre crédito habitação.",
-  "Antes de assinar o contrato de promessa: para.",
+  "Antes de assinar o contrato de promessa: para e lê isto.",
   "O detalhe mau destrói. O detalhe bom fica para sempre.",
   "Opinião impopular: a maioria dos agentes imobiliários não sabe vender.",
-  "Quanto custa MESMO comprar casa em Lisboa (o número real).",
+  "Quanto custa MESMO comprar casa em Lisboa — o número real.",
   "Provavelmente estás a ver as casas erradas no Idealista.",
-  "Fui vendedor de rua antes de ser agente. Aprendi isto."
+  "Fui vendedor de rua antes de ser agente. O que mudou na minha forma de vender.",
+  "O que eu vejo que o comprador nunca vê numa visita.",
+  "Ninguém fala sobre isto nas agências imobiliárias em Portugal."
 ];
 
-let state = JSON.parse(localStorage.getItem('jt_lipe30_v3') || '{}');
-if(!state.tasks) state.tasks = {};
-if(!state.grp) state.grp = {};
-if(!state.notes) state.notes = {};
-if(!state.metrics) state.metrics = {};
-if(!state.scores) state.scores = {};
-if(!state.day) state.day = 0;
-if(!state.reflections) state.reflections = {};
-if(!state.custom) state.custom = {};
+const HOOKS_GENERIC=[
+  "Eu não acredito que achei isto...",
+  "Você precisa ver isto até ao final.",
+  "Isto pode ser polémico, mas...",
+  "E se eu te dissesse que ___?",
+  "O segredo que ninguém te conta...",
+  "3 erros que cometes quando tentas ___.",
+  "Eu queria ter aprendido isto antes...",
+  "Provavelmente estás a fazer isto errado.",
+  "Este truque parece ilegal de tão bom.",
+  "Ninguém está a falar sobre isto.",
+  "Se ainda fazes isto, para agora.",
+  "Opinião impopular: ___."
+];
 
-let currentDay = state.day;
-let followersChart = null;
-let scoreChart = null;
+const FORMATS=[
+  {name:"Chamada de vídeo",desc:"Papo de amigo, natural e direto. Cria conexão e passa verdade."},
+  {name:"Super editado",desc:"Vários cortes, sons, efeitos. Prende atenção rápido."},
+  {name:"Atuação",desc:"Personagem ou cena. Humor, reflexão ou storytelling."},
+  {name:"Entrevista",desc:"Com amigo, especialista ou desconhecido. Traz dinamismo."},
+  {name:"Quadro ao fundo",desc:"Algo escrito atrás de ti. Âncora visual que reforça o tema."},
+  {name:"React",desc:"Reages a vídeo que já existe. Fácil de fazer, gera debate."},
+  {name:"Storytelling",desc:"Contas uma história — tua ou de outra pessoa."},
+  {name:"Tutorial / Dicas rápidas",desc:"Ensinas algo concreto. Gera saves e compartilhamentos."},
+  {name:"Antes e depois",desc:"Transformação ou comparativo. Passa prova social."},
+  {name:"Narrando com imagens",desc:"Voz a contar + imagens por cima. Para quem tem vergonha da câmara."}
+];
 
-function save() { localStorage.setItem('jt_lipe30_v3', JSON.stringify(state)); }
+const TESTS=[
+  {name:"Corte no ápice",desc:"Versão normal vs versão que corta no momento mais intenso. Às vezes o final atrapalha."},
+  {name:"Resultado no início vs final",desc:"Mostra o resultado logo no início vs só no final. A tua audiência prefere saber já ou ser surpreendida?"},
+  {name:"Teste de ganchos",desc:"Mesmo vídeo, inícios diferentes: visual, sonoro, curiosidade, indignação, pergunta, emocional."},
+  {name:"Teste de interação",desc:"Sozinho vs com outra pessoa. O formato fica mais leve, engraçado ou dinâmico?"},
+  {name:"Teste da música",desc:"Emocional, energética, sem música. Qual emoção a música puxa mais?"},
+  {name:"Teste do look",desc:"Looks diferentes: fato social vs casual. Cada público identifica-se de forma diferente."},
+  {name:"Falado vs Atuado vs Escrito",desc:"3 formatos para a mesma ideia. Como a tua audiência prefere consumir?"}
+];
 
-function calcScore(d) {
-  const day = DAYS[d];
-  const tasks = state.tasks[d] || [];
-  const grpArr = state.grp[d] || [];
-  const grpTarget = day.grp;
-  const tasksDone = tasks.filter(Boolean).length;
-  const totalTasks = day.tasks.length;
-  const grpDone = grpArr.filter(Boolean).length;
-  const taskScore = totalTasks > 0 ? Math.round((tasksDone/totalTasks)*7) : 7;
-  const grpScore = grpTarget > 0 ? Math.round(Math.min(grpDone/grpTarget,1)*3) : 3;
-  const s = Math.min(10, taskScore + grpScore);
-  state.scores[d] = s;
-  return s;
+// ─── STATE ───
+let S = JSON.parse(localStorage.getItem('jt_v4')||'{}');
+if(!S.tasks)S.tasks={};if(!S.grp)S.grp={};if(!S.notes)S.notes={};
+if(!S.metrics)S.metrics={};if(!S.scores)S.scores={};
+if(!S.day)S.day=0;if(!S.reflections)S.reflections={};if(!S.custom)S.custom={};
+
+let curDay=S.day;
+let fChart=null,sChart=null;
+
+function save(){localStorage.setItem('jt_v4',JSON.stringify(S));}
+
+// ─── SCORE ───
+function calcScore(d){
+  const day=DAYS[d];
+  const tasks=S.tasks[d]||[];
+  const grpArr=S.grp[d]||[];
+  const tasksDone=tasks.filter(Boolean).length;
+  const total=day.tasks.length;
+  const grpTarget=day.grp||3;
+  const grpDone=grpArr.filter(Boolean).length;
+  const ts=total>0?Math.round((tasksDone/total)*7):7;
+  const gs=day.grp>0?Math.round(Math.min(grpDone/grpTarget,1)*3):3;
+  const sc=Math.min(10,ts+gs);
+  S.scores[d]=sc;return sc;
 }
 
-function renderDay() {
-  const day = DAYS[currentDay];
-  document.getElementById('day-number').textContent = `Dia ${currentDay+1} de 30`;
-  document.getElementById('day-name').textContent = day.title;
-  document.getElementById('day-phase').textContent = day.phase;
-  document.getElementById('header-score').textContent = `Dia ${currentDay+1}`;
-  document.getElementById('coach-note').textContent = day.coach;
+// ─── RENDER TODAY ───
+function renderDay(){
+  const day=DAYS[curDay];
+  document.getElementById('day-counter').textContent=`DIA ${curDay+1} DE 30`;
+  document.getElementById('header-badge').textContent=`Dia ${curDay+1}`;
+  document.getElementById('today-phase').textContent=`FASE ${day.phaseN} · ${day.phase.toUpperCase()}`;
+  document.getElementById('today-day').textContent=`Dia ${curDay+1}`;
+  document.getElementById('today-title').textContent=day.title;
+  document.getElementById('today-meta').innerHTML=`
+    <span class="today-tag tag-blue">⏱ ${day.time}</span>
+    <span class="today-tag tag-green">${day.grp>0?`🔁 GRP ${day.grp>3?day.grp:3}x`:'📅 Sem GRP hoje'}</span>
+    <span class="today-tag tag-amber">${day.phase}</span>`;
+
+  document.getElementById('coach-text').textContent=day.coach;
+  document.getElementById('btn-prev').disabled=curDay===0;
+  document.getElementById('btn-next').disabled=curDay===29;
 
   // Tasks
-  if(!state.tasks[currentDay]) state.tasks[currentDay] = new Array(day.tasks.length).fill(false);
-  const tasksList = document.getElementById('tasks-list');
-  tasksList.innerHTML = day.tasks.map((t,i) => {
-    const done = state.tasks[currentDay][i];
-    return `<div class="task-item ${done?'done':''}" onclick="toggleTask(${i})">
-      <div class="task-cb">${done?'✓':''}</div>
+  if(!S.tasks[curDay])S.tasks[curDay]=new Array(day.tasks.length).fill(false);
+  document.getElementById('tasks-list').innerHTML=day.tasks.map((t,i)=>`
+    <div class="task-item ${S.tasks[curDay][i]?'done':''}" onclick="toggleTask(${i})">
+      <div class="task-check"></div>
       <div class="task-text">${t}</div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 
   // GRP
-  const grpCard = document.getElementById('grp-card');
-  const target = currentDay >= 20 ? 5 : (day.grp || 3);
-  if(day.grp === 0) {
-    grpCard.style.display = 'none';
-  } else {
-    grpCard.style.display = 'block';
-    if(!state.grp[currentDay]) state.grp[currentDay] = new Array(Math.max(target,5)).fill(false);
-    const grpBtns = document.getElementById('grp-buttons');
-    grpBtns.innerHTML = Array.from({length:target},(_,i) => `
-      <button class="grp-btn ${state.grp[currentDay][i]?'done':''}" onclick="toggleGRP(${i})">
-        ${state.grp[currentDay][i]?'✓ ':''} Ciclo ${i+1}
+  const gc=document.getElementById('grp-card');
+  if(day.grp===0){gc.style.display='none';}else{
+    gc.style.display='block';
+    const tgt=curDay>=20?5:(day.grp||3);
+    if(!S.grp[curDay])S.grp[curDay]=new Array(5).fill(false);
+    document.getElementById('grp-buttons').innerHTML=Array.from({length:tgt},(_,i)=>`
+      <button class="grp-btn ${S.grp[curDay][i]?'done':''}" onclick="toggleGRP(${i})">
+        ${S.grp[curDay][i]?'✓ ':''} Ciclo ${i+1}
       </button>`).join('');
   }
 
-  // Notes
-  document.getElementById('note-area').value = state.notes[currentDay] || '';
-  
-  // Score
-  updateScore();
-  document.getElementById('metrics-day-label').textContent = currentDay+1;
+  // Material
+  document.getElementById('material-content').innerHTML=day.material.map((m,mi)=>`
+    <div class="content-section">
+      <div class="content-header" onclick="toggleContent('mc${curDay}_${mi}','ma${curDay}_${mi}')">
+        <div class="content-header-left">
+          <span class="content-icon">${m.icon}</span>
+          <span class="content-name">${m.name}</span>
+        </div>
+        <span class="content-arrow" id="ma${curDay}_${mi}">▾</span>
+      </div>
+      <div class="content-body" id="mc${curDay}_${mi}">${m.content}</div>
+    </div>`).join('');
+
+  document.getElementById('note-area').value=S.notes[curDay]||'';
+  document.getElementById('met-day').textContent=curDay+1;
   loadMetricsForDay();
+  updateScore();
 }
 
-function toggleTask(i) {
-  if(!state.tasks[currentDay]) state.tasks[currentDay] = new Array(DAYS[currentDay].tasks.length).fill(false);
-  state.tasks[currentDay][i] = !state.tasks[currentDay][i];
-  save(); renderDay();
+function updateScore(){
+  const s=calcScore(curDay);save();
+  document.getElementById('score-num').textContent=s;
+  const circ=188.5;
+  document.getElementById('score-ring').style.strokeDashoffset=circ-(circ*s/10);
+  const msgs=['Começa a marcar tarefas','A arrancar','Ganha ritmo','Bom progresso','Mais de metade','Sólido','Muito bom','Excelente','Quase perfeito','Perfeito — Let\'s go'];
+  document.getElementById('score-msg').textContent=msgs[Math.min(s,9)];
+  const tasksDone=(S.tasks[curDay]||[]).filter(Boolean).length;
+  const grpDone=(S.grp[curDay]||[]).filter(Boolean).length;
+  document.getElementById('score-detail').textContent=`${tasksDone} de ${DAYS[curDay].tasks.length} tarefas · ${grpDone} ciclos GRP`;
 }
 
-function toggleGRP(i) {
-  const target = currentDay >= 20 ? 5 : (DAYS[currentDay].grp || 3);
-  if(!state.grp[currentDay]) state.grp[currentDay] = new Array(Math.max(target,5)).fill(false);
-  state.grp[currentDay][i] = !state.grp[currentDay][i];
-  save(); renderDay();
+function toggleTask(i){
+  if(!S.tasks[curDay])S.tasks[curDay]=new Array(DAYS[curDay].tasks.length).fill(false);
+  S.tasks[curDay][i]=!S.tasks[curDay][i];
+  save();renderDay();
+}
+function toggleGRP(i){
+  if(!S.grp[curDay])S.grp[curDay]=new Array(5).fill(false);
+  S.grp[curDay][i]=!S.grp[curDay][i];
+  save();renderDay();
+}
+function saveNote(){
+  S.notes[curDay]=document.getElementById('note-area').value;save();
+  const b=document.getElementById('save-note-btn');b.textContent='Guardado ✓';
+  setTimeout(()=>b.textContent='Guardar nota',1500);
+}
+function changeDay(d){
+  curDay=Math.max(0,Math.min(29,curDay+d));
+  S.day=curDay;save();renderDay();
+  window.scrollTo(0,0);
 }
 
-function updateScore() {
-  const s = calcScore(currentDay);
-  save();
-  document.getElementById('score-val').textContent = s;
-  document.getElementById('score-bar').style.width = `${s*10}%`;
-  const msgs = ['Começa a marcar tarefas','A arrancar','A ganhar ritmo','Bom progresso','Mais de metade','Sólido','Muito bom','Excelente','Quase perfeito','Perfeito'];
-  document.getElementById('score-msg').textContent = msgs[Math.min(s, msgs.length-1)];
+// ─── TOGGLE HELPERS ───
+function toggleCard(bodyId,toggleId){
+  const b=document.getElementById(bodyId);
+  const t=document.getElementById(toggleId);
+  const isOpen=!b.classList.contains('collapsed');
+  b.classList.toggle('collapsed',isOpen);
+  t.classList.toggle('open',!isOpen);
+}
+function toggleContent(bodyId,arrowId){
+  const b=document.getElementById(bodyId);
+  const a=document.getElementById(arrowId);
+  const isOpen=b.classList.contains('open');
+  b.classList.toggle('open',!isOpen);
+  a.classList.toggle('open',!isOpen);
 }
 
-function saveNote() {
-  state.notes[currentDay] = document.getElementById('note-area').value;
-  save();
-  const btn = document.querySelector('#tab-hoje .btn-primary');
-  const orig = btn.textContent;
-  btn.textContent = 'Guardado ✓';
-  setTimeout(()=>btn.textContent=orig, 1500);
-}
-
-function changeDay(d) {
-  currentDay = Math.max(0, Math.min(29, currentDay + d));
-  state.day = currentDay;
-  save(); renderDay();
-}
-
-function showTab(t) {
-  document.querySelectorAll('.nav-btn').forEach((b,i)=>{
-    const tabs=['hoje','calendario','metricas','progresso','recursos'];
-    b.classList.toggle('active', tabs[i]===t);
-  });
+// ─── SECTIONS ───
+function showSection(name,btn){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
-  if(t==='calendario') renderCalendar();
-  if(t==='metricas') renderMetrics();
-  if(t==='progresso') renderProgress();
-  if(t==='recursos') renderResources();
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+  if(name==='calendario')renderCalendar();
+  if(name==='metricas')renderMetrics();
+  if(name==='progresso')renderProgress();
+  if(name==='recursos')renderResources();
 }
 
-function renderCalendar() {
-  const grid = document.getElementById('cal-grid');
-  grid.innerHTML = DAYS.map((_,i)=>{
-    const s = state.scores[i] || 0;
-    const cls = s>=7?'complete':s>=4?'partial':i===currentDay?'today':'';
+// ─── CALENDAR ───
+function renderCalendar(){
+  const g=document.getElementById('cal-grid');
+  g.innerHTML=DAYS.map((_,i)=>{
+    const s=S.scores[i]||0;
+    const cls=s>=7?'complete':s>=4?'partial':i===curDay?'today':'';
     return `<div class="cal-day ${cls}" onclick="jumpDay(${i})">
-      <span>${i+1}</span>
-      ${s>0?`<span class="cal-day-score">${s}/10</span>`:''}
+      <span>${i+1}</span>${s>0?`<span class="cal-day-score">${s}/10</span>`:''}
     </div>`;
   }).join('');
-
-  const phaseList = document.getElementById('phases-list');
-  phaseList.innerHTML = PHASES.map(p=>`
-    <div class="phase-card" style="border-left-color:${p.color}">
-      <div class="phase-name">${p.name}</div>
-      <div class="phase-days">Dias ${p.days}</div>
+  const pc=document.getElementById('phases-container');
+  pc.innerHTML=PHASES.map(p=>`
+    <div style="border-left:3px solid ${p.color};padding:10px 14px;margin-bottom:8px;background:white;border-radius:0 ${10}px ${10}px 0;border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div style="font-weight:500;font-size:14px;color:var(--text);">${p.name}</div>
+      <div style="font-size:12px;color:var(--text3);">Dias ${p.days}</div>
     </div>`).join('');
 }
+function jumpDay(i){curDay=i;S.day=i;save();showSection('hoje',document.querySelector('.nav-item'));renderDay();}
 
-function jumpDay(i) {
-  currentDay = i; state.day = i; save();
-  showTab('hoje'); renderDay();
-}
-
-// METRICS
-function loadMetricsForDay() {
-  const m = state.metrics[currentDay] || {};
+// ─── METRICS ───
+function loadMetricsForDay(){
+  const m=S.metrics[curDay]||{};
   ['followers','reach','likes','comments','saves','shares'].forEach(k=>{
-    const el = document.getElementById('m-'+k);
-    if(el) el.value = m[k] !== undefined ? m[k] : '';
+    const el=document.getElementById('m-'+k);if(el)el.value=m[k]!==undefined?m[k]:'';
   });
-  const fmt = document.getElementById('m-format');
-  if(fmt) fmt.value = m.format || '';
+  const f=document.getElementById('m-format');if(f)f.value=m.format||'';
 }
-
-function saveMetrics() {
-  state.metrics[currentDay] = {
-    followers: +document.getElementById('m-followers').value || 0,
-    reach: +document.getElementById('m-reach').value || 0,
-    likes: +document.getElementById('m-likes').value || 0,
-    comments: +document.getElementById('m-comments').value || 0,
-    saves: +document.getElementById('m-saves').value || 0,
-    shares: +document.getElementById('m-shares').value || 0,
-    format: document.getElementById('m-format').value
+function saveMetrics(){
+  S.metrics[curDay]={
+    followers:+document.getElementById('m-followers').value||0,
+    reach:+document.getElementById('m-reach').value||0,
+    likes:+document.getElementById('m-likes').value||0,
+    comments:+document.getElementById('m-comments').value||0,
+    saves:+document.getElementById('m-saves').value||0,
+    shares:+document.getElementById('m-shares').value||0,
+    format:document.getElementById('m-format').value
   };
-  save(); renderMetrics();
-  const btn = document.querySelector('#tab-metricas .btn-primary');
-  btn.textContent = 'Guardado ✓';
-  setTimeout(()=>btn.textContent='Guardar métricas', 1500);
+  save();renderMetrics();
+  const b=document.getElementById('save-metrics-btn');b.textContent='Guardado ✓';
+  setTimeout(()=>b.textContent='Guardar',1500);
 }
-
-function renderMetrics() {
+function renderMetrics(){
   loadMetricsForDay();
-  const all = Object.values(state.metrics);
-  const n = all.length;
-  const maxF = Math.max(...Object.values(state.metrics).map(m=>m.followers||0), 0);
-  const avgL = n ? Math.round(all.reduce((a,m)=>a+(m.likes||0),0)/n) : 0;
-  const totalS = all.reduce((a,m)=>a+(m.saves||0),0);
-  const totalSh = all.reduce((a,m)=>a+(m.shares||0),0);
-
-  document.getElementById('metrics-summary').innerHTML = `
-    <div class="summary-card"><div class="summary-val">${maxF}</div><div class="summary-lbl">Seguidores máx</div></div>
-    <div class="summary-card"><div class="summary-val">${n}</div><div class="summary-lbl">Dias registados</div></div>
-    <div class="summary-card"><div class="summary-val">${avgL}</div><div class="summary-lbl">Likes médios</div></div>
-    <div class="summary-card"><div class="summary-val">${totalSh}</div><div class="summary-lbl">Shares totais</div></div>`;
-
+  const all=Object.values(S.metrics);const n=all.length;
+  const maxF=Math.max(...Object.values(S.metrics).map(m=>m.followers||0),0);
+  const avgL=n?Math.round(all.reduce((a,m)=>a+(m.likes||0),0)/n):0;
+  const totSh=all.reduce((a,m)=>a+(m.shares||0),0);
+  document.getElementById('metrics-summary').innerHTML=`
+    <div class="sum-card"><div class="sum-val">${maxF}</div><div class="sum-lbl">Seguidores máx</div></div>
+    <div class="sum-card"><div class="sum-val">${n}</div><div class="sum-lbl">Dias registados</div></div>
+    <div class="sum-card"><div class="sum-val">${avgL}</div><div class="sum-lbl">Likes médios</div></div>
+    <div class="sum-card"><div class="sum-val">${totSh}</div><div class="sum-lbl">Shares totais</div></div>`;
   renderFollowersChart();
 }
-
-function renderFollowersChart() {
-  const labels=[]; const data=[];
-  for(let i=0;i<30;i++){
-    if(state.metrics[i]&&state.metrics[i].followers){
-      labels.push('D'+(i+1)); data.push(state.metrics[i].followers);
-    }
-  }
-  const ctx = document.getElementById('followers-chart');
-  if(followersChart) followersChart.destroy();
-  if(!data.length){ ctx.parentElement.innerHTML='<p style="font-size:13px;color:var(--text3);padding:20px 0">Regista métricas para ver a evolução</p>'; return; }
-  followersChart = new Chart(ctx,{type:'line',data:{labels,datasets:[{label:'Seguidores',data,borderColor:'#2A5FA8',backgroundColor:'rgba(42,95,168,.08)',tension:.3,fill:true,borderWidth:2,pointBackgroundColor:'#2A5FA8',pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#9a9990'},grid:{color:'rgba(0,0,0,.04)'}},x:{ticks:{color:'#9a9990'},grid:{display:false}}}}});
+function renderFollowersChart(){
+  const labels=[],data=[];
+  for(let i=0;i<30;i++){if(S.metrics[i]&&S.metrics[i].followers){labels.push('D'+(i+1));data.push(S.metrics[i].followers);}}
+  const ctx=document.getElementById('followers-chart');
+  if(fChart)fChart.destroy();
+  if(!data.length){ctx.parentElement.innerHTML='<p style="font-size:13px;color:var(--text3);padding:20px 0">Regista métricas para ver a evolução</p>';return;}
+  fChart=new Chart(ctx,{type:'line',data:{labels,datasets:[{label:'Seguidores',data,borderColor:'#2A5FA8',backgroundColor:'rgba(42,95,168,.07)',tension:.3,fill:true,borderWidth:2,pointBackgroundColor:'#2A5FA8',pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#9a9990'},grid:{color:'rgba(0,0,0,.04)'}},x:{ticks:{color:'#9a9990'},grid:{display:false}}}}});
 }
 
-function renderProgress() {
-  const doneDays = Object.keys(state.scores).filter(k=>state.scores[k]>=7).length;
-  const scoreVals = Object.values(state.scores);
-  const avg = scoreVals.length ? Math.round(scoreVals.reduce((a,b)=>a+b,0)/scoreVals.length) : 0;
-  const grpTotal = Object.values(state.grp).reduce((a,arr)=>a+arr.filter(Boolean).length,0);
-
-  document.getElementById('overview-summary').innerHTML = `
-    <div class="summary-card"><div class="summary-val">${doneDays}/30</div><div class="summary-lbl">Dias completos</div></div>
-    <div class="summary-card"><div class="summary-val">${avg}/10</div><div class="summary-lbl">Score médio</div></div>
-    <div class="summary-card"><div class="summary-val">${currentDay+1}</div><div class="summary-lbl">Dia atual</div></div>
-    <div class="summary-card"><div class="summary-val">${grpTotal}</div><div class="summary-lbl">Ciclos GRP</div></div>`;
-
-  const pp = document.getElementById('phase-progress');
-  pp.innerHTML = PHASES.map(p=>{
-    const [s,e]=p.range;
-    const total=e-s+1;
-    const done=Array.from({length:total},(_,i)=>state.scores[s+i]||0).filter(v=>v>=7).length;
-    const pct=Math.round((done/total)*100);
-    return `<div class="prog-row">
-      <div class="prog-lbl" style="font-size:12px">${p.name}</div>
-      <div class="prog-bg"><div class="prog-fill" style="width:${pct}%;background:${p.color}"></div></div>
-      <div class="prog-pct">${pct}%</div>
-    </div>`;
+// ─── PROGRESS ───
+function renderProgress(){
+  const done=Object.keys(S.scores).filter(k=>S.scores[k]>=7).length;
+  const sv=Object.values(S.scores);
+  const avg=sv.length?Math.round(sv.reduce((a,b)=>a+b,0)/sv.length):0;
+  const grpTot=Object.values(S.grp).reduce((a,arr)=>a+arr.filter(Boolean).length,0);
+  document.getElementById('overview-cards').innerHTML=`
+    <div class="sum-card"><div class="sum-val">${done}/30</div><div class="sum-lbl">Dias completos</div></div>
+    <div class="sum-card"><div class="sum-val">${avg}/10</div><div class="sum-lbl">Score médio</div></div>
+    <div class="sum-card"><div class="sum-val">${curDay+1}</div><div class="sum-lbl">Dia atual</div></div>
+    <div class="sum-card"><div class="sum-val">${grpTot}</div><div class="sum-lbl">Ciclos GRP</div></div>`;
+  document.getElementById('phase-progress').innerHTML=PHASES.map(p=>{
+    const[s,e]=p.range;const tot=e-s+1;
+    const dn=Array.from({length:tot},(_,i)=>S.scores[s+i]||0).filter(v=>v>=7).length;
+    const pct=Math.round((dn/tot)*100);
+    return `<div class="prog-row"><div class="prog-lbl">${p.name}</div><div class="prog-bg"><div class="prog-fill" style="width:${pct}%;background:${p.color}"></div></div><div class="prog-pct">${pct}%</div></div>`;
   }).join('');
-
-  // Load reflections
-  const r = state.reflections || {};
-  document.getElementById('q1').value = r.q1 || '';
-  document.getElementById('q2').value = r.q2 || '';
-  document.getElementById('q3').value = r.q3 || '';
-
+  const r=S.reflections||{};
+  document.getElementById('q1').value=r.q1||'';
+  document.getElementById('q2').value=r.q2||'';
+  document.getElementById('q3').value=r.q3||'';
   renderScoreChart();
 }
-
-function saveReflections() {
-  state.reflections = {
-    q1: document.getElementById('q1').value,
-    q2: document.getElementById('q2').value,
-    q3: document.getElementById('q3').value
-  };
-  save();
+function saveReflections(){
+  S.reflections={q1:document.getElementById('q1').value,q2:document.getElementById('q2').value,q3:document.getElementById('q3').value};save();
+}
+function renderScoreChart(){
+  const ctx=document.getElementById('score-chart');
+  if(sChart)sChart.destroy();
+  if(!Object.keys(S.scores).length){ctx.parentElement.innerHTML='<p style="font-size:13px;color:var(--text3);padding:20px 0">Completa dias para ver o score</p>';return;}
+  const data=Array.from({length:30},(_,i)=>S.scores[i]||null);
+  sChart=new Chart(ctx,{type:'bar',data:{labels:Array.from({length:30},(_,i)=>'D'+(i+1)),datasets:[{data,backgroundColor:data.map(v=>v===null?'rgba(154,153,144,.15)':v>=7?'rgba(26,143,104,.65)':v>=5?'rgba(42,95,168,.55)':'rgba(160,45,45,.55)'),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:0,max:10,ticks:{color:'#9a9990'}},x:{ticks:{color:'#9a9990',autoSkip:true,maxRotation:0},grid:{display:false}}}}});
 }
 
-function renderScoreChart() {
-  const ctx = document.getElementById('score-chart');
-  if(scoreChart) scoreChart.destroy();
-  const hasData = Object.keys(state.scores).length > 0;
-  if(!hasData){ ctx.parentElement.innerHTML='<p style="font-size:13px;color:var(--text3);padding:20px 0">Completa dias para ver o score</p>'; return; }
-  const labels = Array.from({length:30},(_,i)=>'D'+(i+1));
-  const data = Array.from({length:30},(_,i)=>state.scores[i]||null);
-  scoreChart = new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:data.map(v=>v===null?'rgba(154,153,144,.2)':v>=7?'rgba(29,158,117,.65)':v>=5?'rgba(42,95,168,.55)':'rgba(163,45,45,.55)'),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:0,max:10,ticks:{color:'#9a9990'}},x:{ticks:{color:'#9a9990',autoSkip:true,maxRotation:0},grid:{display:false}}}}});
-}
-
-function renderResources() {
-  // Formats
-  document.getElementById('formats-list').innerHTML = FORMATS.map(f=>`<span class="resource-pill">${f}</span>`).join('');
-  // Hooks
-  document.getElementById('hooks-list').innerHTML = HOOKS_IMOBI.map(h=>`
-    <div class="context-box" style="cursor:pointer;margin-bottom:0;" onclick="copyHook('${h.replace(/'/g,"\\'")}', this)">
-      <div class="context-text" style="font-size:13px;">"${h}"</div>
+// ─── RESOURCES ───
+function renderResources(){
+  document.getElementById('hooks-list').innerHTML=HOOKS_IMOBI.map(h=>`
+    <div class="res-hook" onclick="copyText('${h.replace(/'/g,"\\'")}',this)">
+      <div class="res-hook-text">"${h}"</div>
+      <div class="res-hook-copy">Clica para copiar</div>
     </div>`).join('');
-  // Load saved custom
-  const c = state.custom || {};
-  if(c.frase) document.getElementById('frase-base').value = c.frase;
-  if(c.temas) document.getElementById('temas-area').value = c.temas;
-  if(c.msg) document.getElementById('msg-padrao').value = c.msg;
+  document.getElementById('hooks-generic').innerHTML=HOOKS_GENERIC.map(h=>`
+    <div class="res-hook" onclick="copyText('${h.replace(/'/g,"\\'")}',this)">
+      <div class="res-hook-text">"${h}"</div>
+      <div class="res-hook-copy">Clica para copiar</div>
+    </div>`).join('');
+  document.getElementById('formats-list').innerHTML=FORMATS.map(f=>`
+    <div style="padding:10px 12px;background:var(--bg2);border-radius:var(--r-sm);margin-bottom:6px;">
+      <div style="font-size:13px;font-weight:500;margin-bottom:2px;">${f.name}</div>
+      <div style="font-size:12px;color:var(--text3);">${f.desc}</div>
+    </div>`).join('');
+  document.getElementById('tests-list').innerHTML=TESTS.map(t=>`
+    <div style="padding:10px 12px;background:var(--bg2);border-radius:var(--r-sm);margin-bottom:6px;">
+      <div style="font-size:13px;font-weight:500;margin-bottom:2px;">${t.name}</div>
+      <div style="font-size:12px;color:var(--text3);">${t.desc}</div>
+    </div>`).join('');
+  const c=S.custom||{};
+  if(c.frase)document.getElementById('frase-base').value=c.frase;
+  if(c.temas)document.getElementById('temas-area').value=c.temas;
+  if(c.msg)document.getElementById('msg-padrao').value=c.msg;
 }
-
-function copyHook(h, el) {
-  navigator.clipboard.writeText(h).then(()=>{
-    const orig = el.querySelector('.context-text').style.color;
-    el.querySelector('.context-text').style.color = 'var(--green)';
-    setTimeout(()=>el.querySelector('.context-text').style.color=orig, 1200);
-  }).catch(()=>{});
+function copyText(t,el){
+  navigator.clipboard.writeText(t).catch(()=>{});
+  el.querySelector('.res-hook-copy').textContent='Copiado ✓';
+  setTimeout(()=>el.querySelector('.res-hook-copy').textContent='Clica para copiar',1500);
 }
+function saveFrase(){S.custom=S.custom||{};S.custom.frase=document.getElementById('frase-base').value;save();}
+function saveTemas(){S.custom=S.custom||{};S.custom.temas=document.getElementById('temas-area').value;save();}
+function saveMsgPadrao(){S.custom=S.custom||{};S.custom.msg=document.getElementById('msg-padrao').value;save();}
 
-function saveFrase() { state.custom = state.custom||{}; state.custom.frase=document.getElementById('frase-base').value; save(); }
-function saveTemas() { state.custom = state.custom||{}; state.custom.temas=document.getElementById('temas-area').value; save(); }
-function saveMsgPadrao() { state.custom = state.custom||{}; state.custom.msg=document.getElementById('msg-padrao').value; save(); }
-
-// INIT
+// ─── INIT ───
 renderDay();
 </script>
 </body>
